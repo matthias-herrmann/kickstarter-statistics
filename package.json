@@ -1,23 +1,27 @@
 {
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build-production": "webpack --mode production"
+    "copy-assets": "copyfiles -s -u 2 src/assets/* dist/assets",
+    "start": "npm run copy-assets && webpack && webpack-dev-server --mode development",
+    "build": "npm run copy-assets && webpack --mode production"
   },
   "dependencies": {
     "ol": "^4.6.5"
   },
   "devDependencies": {
     "@types/ol": "^4.6.1",
-    "@types/webpack": "^4.1.4",
+    "@types/webpack": "^4.4.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "copyfiles": "^2.0.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-google": "^0.9.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.21.0",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.14",
-    "webpack-dev-server": "^3.1.4"
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4",
+    "write-file-webpack-plugin": "^4.3.1"
   },
   "name": "kickstarter-statistics",
   "version": "1.0.0",

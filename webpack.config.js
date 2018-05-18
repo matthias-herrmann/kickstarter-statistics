@@ -1,9 +1,10 @@
 /* eslint-disable */
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 
 module.exports = {
+  context: path.join(__dirname, '/src'),
   module: {
     rules: [
       {
@@ -16,12 +17,18 @@ module.exports = {
   devServer: {
     contentBase: "./dist"
   },
+  output: {
+    path: path.join(__dirname, '/dist'),
+    filename: "main.js"
+  },
   plugins: [
+    new CopyWebpackPlugin([
+      {from: "assets", to: "assets"}  // not working if brackets are in project path (see https://github.com/webpack-contrib/copy-webpack-plugin/issues/231)
+    ], {debug: 'debug', copyUnmodified: true}),
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
+      template: "./index.html",
       filename: "./index.html"
     }),
-    new webpack.HotModuleReplacementPlugin()
   ],
-  entry: "./src/main.js"
+  entry: "./main.js"
 };
