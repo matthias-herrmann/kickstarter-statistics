@@ -276,5 +276,5 @@ export const countryObject = () => asList().reduce((obj, dataSet) => ({
  */
 export const countryToColors = colorFunction => dataList().reduce((obj, dataSet) => ({
   ...obj,
-  [dataSet["Country"]]: colorFunction(dataSet),
+  [dataSet["country"]]: colorFunction(dataSet),
 }), {});
