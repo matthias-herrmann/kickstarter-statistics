@@ -274,7 +274,7 @@ export const countryObject = () => asList().reduce((obj, dataSet) => ({
  * @param colorFunction The function to convert the dataset to a color.
  * @returns {*} A object in the form of {"countrycode": color, ...}
  */
-export const countryToColors = colorFunction => asList().reduce((obj, dataSet) => ({
+export const countryToColors = colorFunction => dataList().reduce((obj, dataSet) => ({
   ...obj,
   [dataSet["Country"]]: colorFunction(dataSet),
 }), {});
