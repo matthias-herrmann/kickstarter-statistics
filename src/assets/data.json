@@ -4,153 +4,197 @@
     "country": "BE",
     "avg_pledged": 5873.60254264668,
     "avg_goal": 32662.239608802,
-    "projects_count": 409.0
+    "projects_count": 409,
+    "median_pledged": 223.7647594,
+    "median_goal": 6000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa80",
     "country": "AT",
     "avg_pledged": 12945.565227612,
     "avg_goal": 35046.7934131737,
-    "projects_count": 334.0
+    "projects_count": 334,
+    "median_pledged": 252.29539502,
+    "median_goal": 10000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa81",
     "country": "DK",
     "avg_pledged": 7643.14734126517,
     "avg_goal": 277356.194148936,
-    "projects_count": 752.0
+    "projects_count": 752,
+    "median_pledged": 385.19882347500004,
+    "median_goal": 30000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa82",
     "country": "JP",
     "avg_pledged": 13630.9260616117,
     "avg_goal": 2897895.66666667,
-    "projects_count": 30.0
+    "projects_count": 30,
+    "median_pledged": 1689.968268505,
+    "median_goal": 427500
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa83",
     "country": "IE",
     "avg_pledged": 6006.81214931264,
     "avg_goal": 52458.4584980237,
-    "projects_count": 506.0
+    "projects_count": 506,
+    "median_pledged": 237.66666426,
+    "median_goal": 5000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa84",
     "country": "IT",
     "avg_pledged": 4739.10664357158,
     "avg_goal": 64370.5065554231,
-    "projects_count": 1678.0
+    "projects_count": 1678,
+    "median_pledged": 84.70403776,
+    "median_goal": 8000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa85",
     "country": "MX",
     "avg_pledged": 1676.50565477741,
     "avg_goal": 283481.963414634,
-    "projects_count": 984.0
+    "projects_count": 984,
+    "median_pledged": 143.47878215,
+    "median_goal": 52500
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa86",
     "country": "FR",
     "avg_pledged": 12486.8433028318,
     "avg_goal": 42083.2428339643,
-    "projects_count": 1849.0
+    "projects_count": 1849,
+    "median_pledged": 596.62952,
+    "median_goal": 8000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa87",
     "country": "NZ",
     "avg_pledged": 5397.9968616203,
     "avg_goal": 21178.3388157895,
-    "projects_count": 912.0
+    "projects_count": 912,
+    "median_pledged": 436.35334121,
+    "median_goal": 6000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa88",
     "country": "ES",
     "avg_pledged": 6450.97286067379,
     "avg_goal": 51907.9350463954,
-    "projects_count": 1401.0
+    "projects_count": 1401,
+    "median_pledged": 147.29676984,
+    "median_goal": 6000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa89",
     "country": "US",
     "avg_pledged": 12130.1475796958,
     "avg_goal": 39250.3335501645,
-    "projects_count": 188749.0
+    "projects_count": 188749,
+    "median_pledged": 1191,
+    "median_goal": 5000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8a",
     "country": "LU",
     "avg_pledged": 11553.6671838541,
     "avg_goal": 24464.9090909091,
-    "projects_count": 33.0
+    "projects_count": 33,
+    "median_pledged": 1512.0061033,
+    "median_goal": 10000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8b",
     "country": "GB",
     "avg_pledged": 8317.58249754421,
     "avg_goal": 26089.0796493543,
-    "projects_count": 21218.0
+    "projects_count": 21218,
+    "median_pledged": 749.09105123,
+    "median_goal": 3000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8c",
     "country": "AU",
     "avg_pledged": 7101.8039105937,
     "avg_goal": 81760.5406776222,
-    "projects_count": 4929.0
+    "projects_count": 4929,
+    "median_pledged": 271.66365534,
+    "median_goal": 7000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8d",
     "country": "SG",
     "avg_pledged": 13521.0445603711,
     "avg_goal": 25267.4855072464,
-    "projects_count": 276.0
+    "projects_count": 276,
+    "median_pledged": 1099.181691825,
+    "median_goal": 7000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8e",
     "country": "CA",
     "avg_pledged": 7461.77254802549,
     "avg_goal": 56572.043209218,
-    "projects_count": 9373.0
+    "projects_count": 9373,
+    "median_pledged": 411.96172,
+    "median_goal": 6000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8f",
     "country": "NL",
     "avg_pledged": 8858.79563290326,
     "avg_goal": 114375.867295947,
-    "projects_count": 1801.0
+    "projects_count": 1801,
+    "median_pledged": 208.44273216,
+    "median_goal": 7500
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa90",
     "country": "SE",
     "avg_pledged": 8316.54649179644,
     "avg_goal": 380095.362910382,
-    "projects_count": 1127.0
+    "projects_count": 1127,
+    "median_pledged": 348.262885,
+    "median_goal": 48000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa91",
     "country": "DE",
     "avg_pledged": 11232.7923353696,
     "avg_goal": 80876.9926229508,
-    "projects_count": 2440.0
+    "projects_count": 2440,
+    "median_pledged": 320.40128129000004,
+    "median_goal": 7500
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa92",
     "country": "CH",
     "avg_pledged": 14322.9727885094,
     "avg_goal": 384737.683189655,
-    "projects_count": 464.0
+    "projects_count": 464,
+    "median_pledged": 346.320604005,
+    "median_goal": 12000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa93",
     "country": "HK",
     "avg_pledged": 21704.7074541918,
     "avg_goal": 183701.76109215,
-    "projects_count": 293.0
+    "projects_count": 293,
+    "median_pledged": 4339.5287215,
+    "median_goal": 58000
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa94",
     "country": "NO",
     "avg_pledged": 4569.79731727454,
     "avg_goal": 183518.972103004,
-    "projects_count": 466.0
+    "projects_count": 466,
+    "median_pledged": 154.144872,
+    "median_goal": 40000
   }
 ]
