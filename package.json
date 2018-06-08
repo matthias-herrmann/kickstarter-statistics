@@ -5,6 +5,9 @@
     "build": "npm run copy-assets && webpack --mode production"
   },
   "dependencies": {
+    "d3": "^5.4.0",
+    "d3-scale": "^2.0.0",
+    "d3-svg-legend": "^2.25.6",
     "ol": "^4.6.5"
   },
   "devDependencies": {
