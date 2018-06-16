@@ -29,7 +29,7 @@ export const dataList = () => {
  * @returns {*} Object in the form of {"countrycode": {data...}, ...}
  */
 export const countryObject = () => {
-  return asList().reduce((obj, dataSet) => ({
+  return dataList().reduce((obj, dataSet) => ({
     ...obj,
     ...dataSetToCountryObject(dataSet),
   }), {});
