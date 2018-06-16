@@ -6,6 +6,7 @@ import VectorSource from 'ol/source/vector';
 import GeoJSONFormat from 'ol/format/geojson';
 import View from 'ol/view';
 import proj from 'ol/proj';
+import P from './popupMain';
 
 
 const olMap = new Map({
@@ -23,3 +24,4 @@ const olMap = new Map({
 		zoom: 4
 	})
 });
+new P(olMap);
