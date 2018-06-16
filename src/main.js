@@ -1,27 +1,36 @@
 import './styles/stylesheet.css';
 import 'ol/ol.css';
-import Map from 'ol/map';
-import Vector from 'ol/layer/vector';
-import VectorSource from 'ol/source/vector';
-import GeoJSONFormat from 'ol/format/geojson';
-import View from 'ol/view';
-import proj from 'ol/proj';
-import P from './popupMain';
+import * as DataMap from "./DataMap";
+import P from "./popupMain";
 
+const setMapColors = (colors, key, layer) => {
+  const countryColors = DataMap.calcMapColors(key, colors);
+  DataMap.setMapColors(countryColors, layer);
+};
 
-const olMap = new Map({
-	target: 'map',
-	layers: [
-		new Vector({
-			source: new VectorSource({
-				url: 'https://openlayers.org/en/v4.6.5/examples/data/geojson/countries.geojson',
-				format: new GeoJSONFormat()
-			}),
-		})
-	],
-	view: new View({
-		center: proj.fromLonLat([37.41, 20.82]),
-		zoom: 4
-	})
-});
-new P(olMap);
+const addMapControls = (map, layer, colors) => {
+  map.addControl(DataMap.createButtonControls({
+    "avg_pledged": "Pledged avg",
+    "median_pledged": "Pledged median",
+    "avg_goal": "Goal avg",
+    "median_goal": "Goal median",
+    "projects_count": "Count",
+  }, colors, layer));
+};
+
+const initMap = () => {
+  const target = "map",
+    colors = ["#F4E4D8", "#EAC7B0", "#DFAC88", "#D48E5F", "#C97234", "#A15A28", "#79421B", "#4F290E", "#231003"],
+    vecLayer = DataMap.createNewVectorLayer(),
+    map = DataMap.drawNewMap(target, vecLayer);
+  addMapControls(map, colors, vecLayer);
+  setMapColors(colors, "avg_pledged", vecLayer);
+  return map;
+};
+
+const init = () => {
+  const olMap = initMap();
+  new P(olMap);
+};
+
+init();
