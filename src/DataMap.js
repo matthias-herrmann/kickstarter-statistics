@@ -1,4 +1,3 @@
-import './styles/stylesheet.css';
 import 'ol/ol.css';
 import Map from 'ol/map';
 import Vector from 'ol/layer/vector';

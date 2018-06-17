@@ -1,24 +1,53 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.header {
+  $content-size: 5vmin;
+
+  background: royalblue;
+  border-bottom: 0.1em solid darkblue;
+  margin: 0;
+  width: 100vw;
+  padding: 2vmin;
+
+  * {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  img {
+    height: $content-size;
+  }
+
+  h1 {
+    font-size: $content-size;
+  }
+}
+
 .map {
-    height: 600px;
-    width: 100%;
-    background-color: lightskyblue;
+  height: 70vh;
+  width: 100vw;
+  background-color: lightskyblue;
 }
 
 .controls-container {
-    position: absolute !important;
-    top: 5.375em;
-    left: .5em;
+  position: absolute !important;
+  top: 5.375em;
+  left: .5em;
 }
 
 .category-container {
-    position: relative !important;
-    display: grid;
-    margin: 0.3em 0;
+  position: relative !important;
+  display: grid;
+  margin: 0.3em 0;
 }
 
 .category-container button {
-    width: auto !important;
-    padding: 10px !important;
+  width: auto !important;
+  padding: 10px !important;
 }
 
 .arrow_box {
@@ -26,6 +55,7 @@
   background: #000;
   border: 1px solid #003c88;
 }
+
 .arrow_box:after, .arrow_box:before {
   top: 100%;
   left: 50%;
@@ -43,6 +73,7 @@
   border-width: 10px;
   margin-left: -10px;
 }
+
 .arrow_box:before {
   border-color: rgba(0, 60, 136, 0);
   border-top-color: #003c88;
@@ -57,14 +88,17 @@
   background-color: black;
   color: white;
 }
+
 #popup-content {
   max-height: 200px;
   overflow: auto;
 }
+
 #popup-content th {
   text-align: left;
   width: 125px;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
