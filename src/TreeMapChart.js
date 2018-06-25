@@ -25,7 +25,7 @@ treemap(root);
 const cell = svg.selectAll('g')
 	.data(root.leaves())
 	.enter().append('g')
-	.attr('transform', (d) => { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
+	.attr('transform', (d) => 'translate(' + d.x0 + ',' + d.y0 + ')');
 
 cell.append('rect')
 	.attr('id', (d) =>  d.data.id)
@@ -34,21 +34,21 @@ cell.append('rect')
 	.attr('fill', (d) => color(d.parent.data.id));
 
 cell.append('clipPath')
-	.attr('id', (d) => { return 'clip-' + d.data.id; })
+	.attr('id', (d) => 'clip-' + d.data.id)
 	.append('use')
-	.attr('xlink:href', (d) => { return '#' + d.data.id; });
+	.attr('xlink:href', (d) => '#' + d.data.id);
 
 cell.append('text')
-	.attr('clip-path', (d) => { return 'url(#clip-' + d.data.id + ')'; })
+	.attr('clip-path', (d) => 'url(#clip-' + d.data.id + ')')
 	.selectAll('tspan')
-	.data((d) => { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
+	.data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
 	.enter().append('tspan')
 	.attr('x', 4)
-	.attr('y', (d, i) => { return 13 + i * 10; })
-	.text((d) => { return d; });
+	.attr('y', (d, i) => 13 + i * 10)
+	.text((d) => d);
 
 cell.append('title')
-	.text(function(d) { return d.data.id + '\n' + format(d.value); });
+	.text((d) => d.data.id + '\n' + format(d.value));
 
 d3.selectAll('input')
 	.data([sumBySize, sumByCount, sumByTotalDollars], function (d)  {
@@ -76,6 +76,8 @@ function changed(sum) { // e.g. sumByCount, sumBySize, sumByTotalDollars
 		.attr('height', (d) => d.y1 - d.y0);
 }
 
+// TODO:
+// Remove this after implementation, should not be visualized
 function sumByCount(d) {
 	return d.children ? 0 : 1;
 }
