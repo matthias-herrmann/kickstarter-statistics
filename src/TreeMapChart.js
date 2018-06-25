@@ -2,59 +2,58 @@
 import * as d3 from 'd3';
 import data from './assets/flare';
 
-var svg = d3.select('svg'),
-	width = +svg.attr('width'),
-	height = +svg.attr('height');
+const svg = d3.select('svg');
+const width = parseFloat(svg.attr('width'));
+const height = parseFloat(svg.attr('height'));
 
-var fader = function(color) { return d3.interpolateRgb(color, '#fff')(0.2); },
-	color = d3.scaleOrdinal(
-		d3.schemeAccent
-	),
-	format = d3.format(',d');
+const color = d3.scaleOrdinal(d3.schemeAccent);
+const format = d3.format(',d');
 
-var treemap = d3.treemap()
+const treemap = d3.treemap()
 	.tile(d3.treemapResquarify)
 	.size([width, height])
 	.round(true)
 	.paddingInner(1);
 
-var root = d3.hierarchy(data)
-	.eachBefore(function(d) { d.data.id = (d.parent ? d.parent.data.id + '.' : '') + d.data.name; })
+const root = d3.hierarchy(data)
+	.eachBefore((d) => { d.data.id = (d.parent ? d.parent.data.id + '.' : '') + d.data.name; })
 	.sum(sumBySize)
-	.sort(function(a, b) { return b.height - a.height || b.value - a.value; });
+	.sort((a, b) => b.height - a.height || b.value - a.value);
 
 treemap(root);
 
-var cell = svg.selectAll('g')
+const cell = svg.selectAll('g')
 	.data(root.leaves())
 	.enter().append('g')
-	.attr('transform', function(d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
+	.attr('transform', (d) => { return 'translate(' + d.x0 + ',' + d.y0 + ')'; });
 
 cell.append('rect')
-	.attr('id', function(d) { return d.data.id; })
-	.attr('width', function(d) { return d.x1 - d.x0; })
-	.attr('height', function(d) { return d.y1 - d.y0; })
-	.attr('fill', function(d) { return color(d.parent.data.id); });
+	.attr('id', (d) =>  d.data.id)
+	.attr('width', (d) => d.x1 - d.x0)
+	.attr('height', (d) => d.y1 - d.y0)
+	.attr('fill', (d) => color(d.parent.data.id));
 
 cell.append('clipPath')
-	.attr('id', function(d) { return 'clip-' + d.data.id; })
+	.attr('id', (d) => { return 'clip-' + d.data.id; })
 	.append('use')
-	.attr('xlink:href', function(d) { return '#' + d.data.id; });
+	.attr('xlink:href', (d) => { return '#' + d.data.id; });
 
 cell.append('text')
-	.attr('clip-path', function(d) { return 'url(#clip-' + d.data.id + ')'; })
+	.attr('clip-path', (d) => { return 'url(#clip-' + d.data.id + ')'; })
 	.selectAll('tspan')
-	.data(function(d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
+	.data((d) => { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
 	.enter().append('tspan')
 	.attr('x', 4)
-	.attr('y', function(d, i) { return 13 + i * 10; })
-	.text(function(d) { return d; });
+	.attr('y', (d, i) => { return 13 + i * 10; })
+	.text((d) => { return d; });
 
 cell.append('title')
 	.text(function(d) { return d.data.id + '\n' + format(d.value); });
 
 d3.selectAll('input')
-	.data([sumBySize, sumByCount, sumByTotalDollars], function(d) { return d ? d.name : this.value; })
+	.data([sumBySize, sumByCount, sumByTotalDollars], function (d)  {
+		return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
+	})
 	.on('change', changed);
 
 var timeout = d3.timeout(function() {
@@ -66,15 +65,15 @@ var timeout = d3.timeout(function() {
 		.dispatch('change');
 }, 2000);
 
-function changed(sum) {
+function changed(sum) { // e.g. sumByCount, sumBySize, sumByTotalDollars
 	timeout.stop();
 	treemap(root.sum(sum));
 	cell.transition()
 		.duration(750)
-		.attr('transform', function(d) { return 'translate(' + d.x0 + ',' + d.y0 + ')'; })
+		.attr('transform', (d) => 'translate(' + d.x0 + ',' + d.y0 + ')')
 		.select('rect')
-		.attr('width', function(d) { return d.x1 - d.x0; })
-		.attr('height', function(d) { return d.y1 - d.y0; });
+		.attr('width', (d) => d.x1 - d.x0)
+		.attr('height', (d) => d.y1 - d.y0);
 }
 
 function sumByCount(d) {
