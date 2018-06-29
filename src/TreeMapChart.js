@@ -22,9 +22,10 @@ const color = d3.scaleOrdinal(['#49c8c5',
 	'#ef8f6c']);
 const format = d3.format(',d');
 
-const sumByCount = (d) => d.children ? 0 : 1;
+const sumByCount = (d) => d.count;
 const sumByTotalDollars = (d) => d.totalDollars;
-const sumBySize = (d) => d.size;
+
+const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
 const treemap = d3.treemap()
 	.tile(d3.treemapResquarify) // good for comparision, only changes node sizes - not positioning
@@ -34,7 +35,7 @@ const treemap = d3.treemap()
 
 const root = d3.hierarchy(data)
 	.eachBefore((d) => { d.data.id = d.data.name; })
-	.sum(sumBySize)
+	.sum(sumByCount)
 	.sort((a, b) => b.height - a.height || b.value - a.value);
 
 treemap(root);
@@ -60,7 +61,7 @@ cell.append('clipPath')
 cell.append('text')
 	.attr('clip-path', (d) => 'url(#clip-' + d.data.id + ')') // clipping path restricts region in which paint can be applied
 	.selectAll('tspan')
-	.data((d) => d.data.name.split(/(?=[A-Z][^A-Z])/g))
+	.data((d) => d.data.name.split(/(?=[A-Z](\s|&)+[^A-Z])/g))
 	.enter().append('tspan') // within text element, text and font properties and the current position
 	.attr('x', 4)			  // can be adjusted with absolute or relative coordinate values
 	.attr('y', (d, i) => 13 + i * 10)
@@ -68,10 +69,10 @@ cell.append('text')
 	.text((d) => d);
 
 cell.append('title') // Getting displayed on hover
-	.text((d) => d.data.id + '\n' + format(d.value));
+	.text((d) => titleFromDataObject(d));
 
 d3.selectAll('input')
-	.data([sumBySize, sumByCount, sumByTotalDollars], function (d)  {
+	.data([sumByCount, sumByTotalDollars], function (d)  {
 		return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
 	})
 	.on('change', changed);
@@ -93,4 +94,6 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 		.select('rect')
 		.attr('width', (d) => d.x1 - d.x0)
 		.attr('height', (d) => d.y1 - d.y0);
+	cell.selectAll('title')
+		.text(d => titleFromDataObject(d));
 }

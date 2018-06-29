@@ -1,5 +1,5 @@
 {
-  "name": "flare",
+  "name": "Projects",
   "children": [
     {"name": "Games", "children": [{"name": "Games", "size": 38814, "totalDollars": 846.12}]},
     {"name": "Design", "children": [{"name": "Design", "size": 32644, "totalDollars": 803.07}]},
