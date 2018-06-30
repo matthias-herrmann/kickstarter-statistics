@@ -1,20 +1,20 @@
 {
   "name": "Projects",
   "children": [
-    {"name": "Games", "children": [{"name": "Games", "size": 38814, "totalDollars": 846.12}]},
-    {"name": "Design", "children": [{"name": "Design", "size": 32644, "totalDollars": 803.07}]},
-    {"name": "Technology", "children": [{"name": "Technology", "size": 35083, "totalDollars": 742.50}]},
-    {"name": "Film & Video", "children": [{"name": "Film & Video", "size": 67558, "totalDollars": 410.29}]},
-    {"name": "Music", "children": [{"name": "Music", "size": 56415, "totalDollars": 216.95}]},
-    {"name": "Fashion", "children": [{"name": "Fashion", "size": 24938, "totalDollars": 149.56}]},
-    {"name": "Publishing", "children": [{"name": "Publishing", "size": 42417, "totalDollars": 142.03}]},
-    {"name": "Food", "children": [{"name": "Food", "size": 26084, "totalDollars": 134.76}]},
-    {"name": "Art", "children": [{"name": "Art", "size": 30345, "totalDollars": 96.93}]},
-    {"name": "Comics", "children": [{"name": "Comics", "size": 11917, "totalDollars": 80.45}]},
-    {"name": "Theater", "children": [{"name": "Theater", "size": 11274, "totalDollars": 41.83}]},
-    {"name": "Photography", "children": [{"name": "Photography", "size": 11249, "totalDollars": 40.47}]},
-    {"name": "Crafts", "children": [{"name": "Crafts", "size": 9409, "totalDollars": 15.69}]},
-    {"name": "Journalism", "children": [{"name": "Journalism", "size": 5056, "totalDollars": 14.08}]},
-    {"name": "Dance", "children": [{"name": "Dance", "size": 3935, "totalDollars": 13.57}]}
+    {"name": "Games", "children": [{"name": "Games", "count": 38814, "totalDollars": 846.12}]},
+    {"name": "Design", "children": [{"name": "Design", "count": 32644, "totalDollars": 803.07}]},
+    {"name": "Technology", "children": [{"name": "Technology", "count": 35083, "totalDollars": 742.50}]},
+    {"name": "Film & Video", "children": [{"name": "Film & Video", "count": 67558, "totalDollars": 410.29}]},
+    {"name": "Music", "children": [{"name": "Music", "count": 56415, "totalDollars": 216.95}]},
+    {"name": "Fashion", "children": [{"name": "Fashion", "count": 24938, "totalDollars": 149.56}]},
+    {"name": "Publishing", "children": [{"name": "Publishing", "count": 42417, "totalDollars": 142.03}]},
+    {"name": "Food", "children": [{"name": "Food", "count": 26084, "totalDollars": 134.76}]},
+    {"name": "Art", "children": [{"name": "Art", "count": 30345, "totalDollars": 96.93}]},
+    {"name": "Comics", "children": [{"name": "Comics", "count": 11917, "totalDollars": 80.45}]},
+    {"name": "Theater", "children": [{"name": "Theater", "count": 11274, "totalDollars": 41.83}]},
+    {"name": "Photography", "children": [{"name": "Photography", "count": 11249, "totalDollars": 40.47}]},
+    {"name": "Crafts", "children": [{"name": "Crafts", "count": 9409, "totalDollars": 15.69}]},
+    {"name": "Journalism", "children": [{"name": "Journalism", "count": 5056, "totalDollars": 14.08}]},
+    {"name": "Dance", "children": [{"name": "Dance", "count": 3935, "totalDollars": 13.57}]}
   ]
 }
