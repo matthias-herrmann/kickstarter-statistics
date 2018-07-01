@@ -75,7 +75,7 @@ cell.append('text')
 
 cell.selectAll('tspan')
 	.attr('x', function() { return calculateCenterOfTextInRectangle(this).centerX; }) // center x and y. Not using Es6 function because of this context which is the tspan element.
-	.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; });
+	.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; }); // TODO: save function in function object where selection is being passed as param - VIOLATION OF DRY
 
 cell.append('title') // Getting displayed on hover
 	.text((d) => titleFromDataObject(d));
@@ -97,24 +97,27 @@ const timeout = d3.timeout(() => {
 function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTotalDollars
 	timeout.stop();
 
-	const intervalId = setInterval(
-		() => {
-			cell.selectAll('tspan')
-				.attr('x', function() { return calculateCenterOfTextInRectangle(this).centerX; }) // center x and y. Not using Es6 function because of this context which is the tspan element.
-				.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; });
-		},
-		0.03
-	);
-
 	treemap(root.sum(sum));
-	cell.transition()
-		.duration(750)
-		.attr('transform', (d) => 'translate(' + d.x0 + ',' + d.y0 + ')')
-		.selectAll('rect')
-		.attr('width', (d) => d.x1 - d.x0)
-		.attr('height', (d) => d.y1 - d.y0)
-		.each('end', function() {intervalId.stop();});
-
 	cell.selectAll('title')
 		.text(d => titleFromDataObject(d));
+
+	let gTransition = cell.transition()
+		.duration(750);
+
+	gTransition.attr('transform', (d) => 'translate(' + d.x0 + ',' + d.y0 + ')')
+		.selectAll('rect')
+		.attr('width', (d) => d.x1 - d.x0)
+		.attr('height', (d) => d.y1 - d.y0);
+
+	// Help from: https://stackoverflow.com/a/51121537/5111904
+	// Splitting the transition to center text during animation
+	gTransition.selectAll('tspan')
+		.tween('positioning', function() {
+			let self = this;
+			return function() {
+				d3.select(self)
+					.attr('x', function() { return calculateCenterOfTextInRectangle(this).centerX; }) // VIOLATION OF DRY
+					.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; });
+			};
+		});
 }
