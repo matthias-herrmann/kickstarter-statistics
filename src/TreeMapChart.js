@@ -92,7 +92,7 @@ const timeout = d3.timeout(() => {
 	d3.select('input[value="sumByTotalDollars"]')
 		.property('checked', true)
 		.dispatch('change');
-}, 10000);
+}, 2000);
 
 function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTotalDollars
 	timeout.stop();
