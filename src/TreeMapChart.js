@@ -3,8 +3,12 @@ import * as d3 from 'd3';
 import data from './assets/officialKickstarterAggregated';
 
 const svg = d3.select('svg');
-const width = parseFloat(svg.attr('width'));
-const height = parseFloat(svg.attr('height'));
+
+const width = innerWidth * 0.8; // numbers are relative to the viewport size
+const height = innerHeight * 0.7;
+svg.attr('width', width);
+svg.attr('height', height);
+
 const color = d3.scaleOrdinal(['#9f3857',
 	'#01b92f',
 	'#354ed4',
@@ -26,22 +30,27 @@ const sumByTotalDollars = (d) => d.totalDollars;
 
 const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
-const treemap = d3.treemap()
+let treemap = d3.treemap()
 	.tile(d3.treemapResquarify) // good for comparision, only changes node sizes - not positioning
 	.size([width, height])
 	.round(true)
 	.paddingInner(1);
 
+
 const calculateCenterOfTextInRectangle = (tspanNode) => {
 	const rectangleNode = tspanNode.parentElement.previousSibling.previousSibling; // tspan is in text element and 2 nodes above is the rectangle
 	const centerX = (rectangleNode.getAttribute('width') / 2) - (tspanNode.getComputedTextLength() / 2);
 	const centerY = (rectangleNode.getAttribute('height') / 2) + (19 / 2); // 19 is the font-size in pixel
-	return {centerX: centerX,
-		centerY: centerY};
+	return {
+		centerX: centerX,
+		centerY: centerY
+	};
 };
 
 const root = d3.hierarchy(data)
-	.eachBefore((d) => { d.data.id = d.data.name; })
+	.eachBefore((d) => {
+		d.data.id = d.data.name;
+	})
 	.sum(sumByCount)
 	.sort((a, b) => b.height - a.height || b.value - a.value);
 
@@ -54,7 +63,7 @@ const cell = svg.selectAll('g')
 	.attr('transform', (d) => 'translate(' + d.x0 + ',' + d.y0 + ')');
 
 cell.append('rect')
-	.attr('id', (d) =>  d.data.id)
+	.attr('id', (d) => d.data.id)
 	.attr('width', (d) => d.x1 - d.x0)
 	.attr('height', (d) => d.y1 - d.y0)
 	.attr('fill', (d) => color(d.data.id));
@@ -74,16 +83,21 @@ cell.append('text')
 	.text((d) => d);
 
 cell.selectAll('tspan')
-	.attr('x', function() { return calculateCenterOfTextInRectangle(this).centerX; }) // center x and y. Not using Es6 function because of this context which is the tspan element.
-	.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; }); // TODO: save function in function object where selection is being passed as param - VIOLATION OF DRY
+	.attr('x', function () {
+		return calculateCenterOfTextInRectangle(this).centerX;
+	}) // center x and y. Not using Es6 function because of this context which is the tspan element.
+	.attr('y', function () {
+		return calculateCenterOfTextInRectangle(this).centerY;
+	}); // TODO: save function in function object where selection is being passed as param - VIOLATION OF DRY
 
 cell.append('title') // Getting displayed on hover
 	.text((d) => titleFromDataObject(d));
 
-d3.selectAll('input')
-	.data([sumByCount, sumByTotalDollars], function (d)  {
-		return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
-	})
+const inputSelection = d3.selectAll('input');
+
+inputSelection.data([sumByCount, sumByTotalDollars], function (d) {
+	return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
+})
 	.on('change', changed);
 
 // initial selection with nice animation,
@@ -112,12 +126,42 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 	// Help from: https://stackoverflow.com/a/51121537/5111904
 	// Splitting the transition to center text during animation
 	gTransition.selectAll('tspan')
-		.tween('positioning', function() {
+		.tween('positioning', function () {
 			let self = this;
-			return function() {
+			return function () {
 				d3.select(self)
-					.attr('x', function() { return calculateCenterOfTextInRectangle(this).centerX; }) // VIOLATION OF DRY
-					.attr('y', function() { return calculateCenterOfTextInRectangle(this).centerY; });
+					.attr('x', function () {
+						return calculateCenterOfTextInRectangle(this).centerX;
+					}) // VIOLATION OF DRY
+					.attr('y', function () {
+						return calculateCenterOfTextInRectangle(this).centerY;
+					});
 			};
 		});
 }
+
+// rerender treemap after window resizing
+// https://stackoverflow.com/a/31586943/5111904
+const debounce = function (func, wait, immediate) {
+	let timeout;
+	return function () {
+		let context = this, args = arguments;
+		let later = function () {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		let callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
+const reRenderAfterResizing = debounce((function () {
+	const selectedElement = inputSelection.filter(function() { return this.checked; }).nodes()[0];
+	const valueOfSelectedElement = selectedElement.getAttribute('value');
+	treemap.size([innerWidth * 0.8, innerHeight * 0.7]);
+	changed(eval(valueOfSelectedElement));
+}), 250);
+
+window.addEventListener('resize', reRenderAfterResizing);
