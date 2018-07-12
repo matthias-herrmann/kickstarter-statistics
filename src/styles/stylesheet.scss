@@ -1,5 +1,5 @@
 @function vw-no-scrollbar($vw) {
-  @return $vw - ($vw - 100%);
+  @return calc($vw - ($vw - 100%));
 }
 
 body {
