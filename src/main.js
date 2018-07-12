@@ -1,6 +1,6 @@
 import './styles/stylesheet.scss';
 import 'ol/ol.css';
-import * as DataMap from './DataMap';
+import DataMap from './DataMap';
 import P from './popupMain';
 import './TreeMapChart';
 
@@ -11,8 +11,9 @@ const initMap = () => {
 			'avg_pledged': 'Pledged',
 			'avg_goal': 'Goal',
 			'projects_count': 'Project Count',
-		};
-	return DataMap.createDataMap(target, colors, keyValues);
+		},
+		dataMap = new DataMap(target, colors, keyValues);
+	return dataMap.getMap();
 };
 
 const init = () => {

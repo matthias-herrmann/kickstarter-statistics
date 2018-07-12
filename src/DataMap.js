@@ -14,109 +14,128 @@ import * as db from './DataManager';
 import * as d3Scale from 'd3-scale';
 import * as MapLegend from './MapLegend';
 
-//todo map legend
 
-const correctDomain = (min, max, avg) => {
-	const diffMin = Math.abs(avg - min),
-		diffMax = Math.abs(avg - max),
-		diff = diffMin < diffMax ? diffMin : diffMax;
-	return [avg - diff, avg + diff];
-};
+export default class DataMap {
 
-const createColorScale = (key, colors) => {
-	const min = db.min(key),
-		avg = db.avg(key),
-		max = db.max(key),
-		domain = correctDomain(min, max, avg);
-	return d3Scale.scaleQuantize()
-		.domain(domain)
-		.range(colors);
-};
+	constructor(target, colors, keyValues) {
+		const defaultKey = Object.keys(keyValues)[0];
+		this.colors = colors;
+		this.vecLayer = DataMap.createNewVectorLayer();
+		this.map = this.drawNewMap(target);
 
-const getCountryColors = (colorScale, key) => {
-	return db.countryToColors(country => colorScale(country[key]));
-};
+		this.addMapControls(keyValues);
+		this.updateMap(defaultKey);
+	}
 
-const createVectorStyleFunction = countryColors => feature => new Style({
-	stroke: new Stroke({
-		color: 'cornflowerblue',
-		width: 1.5,
-	}),
-	fill: new Fill({
-		color: countryColors[feature.id_] || 'white'
-	})
-});
+	static correctDomain(min, max, avg) {
+		const diffMin = Math.abs(avg - min),
+			diffMax = Math.abs(avg - max),
+			diff = diffMin < diffMax ? diffMin : diffMax;
+		return [avg - diff, avg + diff];
+	}
 
-const createNewVectorLayer = () => new Vector({
-	source: new VectorSource({
-		url: './assets/countries.geojson',
-		format: new GeoJSONFormat(),
-	}),
-});
+	static createColorScale(key, colors) {
+		const min = db.min(key),
+			avg = db.avg(key),
+			max = db.max(key),
+			domain = DataMap.correctDomain(min, max, avg);
+		return d3Scale.scaleQuantize()
+			.domain(domain)
+			.range(colors);
+	}
 
-const drawNewMap = (target, layers) => new Map({
-	layers: [
-		layers,
-	],
-	target: 'map',
-	view: new View({
-		center: proj.fromLonLat([13.41, 52.52]), //Germany
-		zoom: 4, //zoom constant
-		maxZoom: 5,
-		minZoom: 2,
-		extent: [-10018254, -10018254, 10018254, 10018254],
-	}),
-	controls: control.defaults({
-		rotate: false,
-		attribution: false,
-	}),
-});
+	static getCountryColors(colorScale, key) {
+		return db.countryToColors(country => colorScale(country[key]));
+	}
 
-const setMapColors = (countryColors, layer) => {
-	layer.setStyle(createVectorStyleFunction(countryColors));
-};
+	static createVectorStyleFunction(countryColors) {
+		return feature => new Style({
+			stroke: new Stroke({
+				color: 'cornflowerblue',
+				width: 1.5,
+			}),
+			fill: new Fill({
+				color: countryColors[feature.id_] || 'white'
+			})
+		});
+	}
 
-const createButtonControls = (map, textKeys, colorRange, layer) => {
-	const controlsContainer = document.createElement('div');
-	controlsContainer.className = 'button-controls ol-unselectable';
-	Object.keys(textKeys).forEach(key => {
+	static createNewVectorLayer() {
+		return new Vector({
+			source: new VectorSource({
+				url: './assets/countries.geojson',
+				format: new GeoJSONFormat(),
+			}),
+		});
+	}
+
+	getMap() {
+		return this.map;
+	}
+
+	drawNewMap(target) {
+		return new Map({
+			layers: [
+				this.vecLayer
+			],
+			target: target,
+			view: new View({
+				center: proj.fromLonLat([13.41, 52.52]), //Germany
+				zoom: 4, //zoom constant
+				maxZoom: 5,
+				minZoom: 2,
+				extent: [-10018254, -10018254, 10018254, 10018254],
+			}),
+			controls: control.defaults({
+				rotate: false,
+				attribution: false,
+			}),
+		});
+	}
+
+	setMapColors(countryColors) {
+		this.vecLayer.setStyle(DataMap.createVectorStyleFunction(countryColors));
+	}
+
+	createButtonControl({key, text}) {
 		const container = document.createElement('div'),
 			button = document.createElement('button');
-		button.innerHTML = textKeys[key];
-		button.addEventListener('click', () => updateMap(map, colorRange, layer, key));
+		button.innerHTML = text;
+		button.addEventListener('click', () => this.updateMap(key));
 		container.className = 'ol-control';
 		container.appendChild(button);
-		controlsContainer.appendChild(container);
-	});
-	return new Control({element: controlsContainer});
-};
+		return container;
+	}
 
+	createButtonControls(keyValues) {
+		const controlsContainer = document.createElement('div');
+		controlsContainer.className = 'button-controls ol-unselectable';
+		Object.keys(keyValues).forEach(key => {
+			const button = this.createButtonControl({key: key, text: keyValues[key]});
+			controlsContainer.appendChild(button);
+		});
+		return new Control({element: controlsContainer});
+	}
 
-const addMapControls = (map, layer, colors, keyValues) => {
-	map.addControl(createButtonControls(map, keyValues, colors, layer));
-};
+	addMapControls(keyValues) {
+		this.map.addControl(this.createButtonControls(keyValues));
+	}
 
-const setMapLegend = (map, scale) => {
-	const legend = MapLegend.legendFromScale(scale),
-		wrapper = document.createElement('div');
-	wrapper.className = 'legend-control';
-	wrapper.appendChild(legend);
-	// todo remove old control
-	map.addControl(new Control({element: wrapper}));
-};
+	setMapLegend(scale) {
+		const legend = MapLegend.legendFromScale(scale),
+			wrapper = document.createElement('div');
+		wrapper.className = 'legend-control';
+		wrapper.appendChild(legend);
+		// todo remove old control
+		this.map.addControl(new Control({element: wrapper}));
+	}
 
-const updateMap = (map, colorRange, layer, key) => {
-	const scale = createColorScale(key, colorRange),
-		countryColors = getCountryColors(scale, key);
-	setMapColors(countryColors, layer);
-	setMapLegend(map, scale);
-};
+	updateMap(key) {
+		const scale = DataMap.createColorScale(key, this.colors),
+			countryColors = DataMap.getCountryColors(scale, key);
+		this.setMapColors(countryColors);
+		this.setMapLegend(scale);	// todo add unit
+	}
 
-export const createDataMap = (target, colors, keyValues) => {
-	const vecLayer = createNewVectorLayer(),
-		map = drawNewMap(target, vecLayer),
-		defaultKey = Object.keys(keyValues)[0];
-	addMapControls(map, vecLayer, colors, keyValues);
-	updateMap(map, colors, vecLayer, defaultKey);
-	return map;
-};
+}
+
