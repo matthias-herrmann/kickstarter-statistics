@@ -12,23 +12,32 @@ import control from 'ol/control';
 import Control from 'ol/control/control';
 import * as db from './DataManager';
 import * as d3Scale from 'd3-scale';
+import * as MapLegend from './MapLegend';
 
 //todo map legend
 
-export const createColorScale = (key, colors) => {
+const correctDomain = (min, max, avg) => {
+	const diffMin = Math.abs(avg - min),
+		diffMax = Math.abs(avg - max),
+		diff = diffMin < diffMax ? diffMin : diffMax;
+	return [avg - diff, avg + diff];
+};
+
+const createColorScale = (key, colors) => {
 	const min = db.min(key),
+		avg = db.avg(key),
 		max = db.max(key),
-		domain = [min, max];
+		domain = correctDomain(min, max, avg);
 	return d3Scale.scaleQuantize()
 		.domain(domain)
 		.range(colors);
 };
 
-export const getCountryColors = (colorScale, key) => {
+const getCountryColors = (colorScale, key) => {
 	return db.countryToColors(country => colorScale(country[key]));
 };
 
-export const createVectorStyleFunction = countryColors => feature => new Style({
+const createVectorStyleFunction = countryColors => feature => new Style({
 	stroke: new Stroke({
 		color: 'cornflowerblue',
 		width: 1.5,
@@ -38,14 +47,14 @@ export const createVectorStyleFunction = countryColors => feature => new Style({
 	})
 });
 
-export const createNewVectorLayer = () => new Vector({
+const createNewVectorLayer = () => new Vector({
 	source: new VectorSource({
 		url: './assets/countries.geojson',
 		format: new GeoJSONFormat(),
 	}),
 });
 
-export const drawNewMap = (target, layers) => new Map({
+const drawNewMap = (target, layers) => new Map({
 	layers: [
 		layers,
 	],
@@ -63,34 +72,51 @@ export const drawNewMap = (target, layers) => new Map({
 	}),
 });
 
-export const calcMapColors = (key, colorRange) => {
-	const colorScale = createColorScale(key, colorRange);
-	return getCountryColors(colorScale, key);
-};
-
-export const setMapColors = (countryColors, layer) => {
+const setMapColors = (countryColors, layer) => {
 	layer.setStyle(createVectorStyleFunction(countryColors));
 };
 
-//todo better name, rework!!
-export const createButtonControls = (textKeys, colors, layer) => {
-
+const createButtonControls = (map, textKeys, colorRange, layer) => {
 	const controlsContainer = document.createElement('div');
-	controlsContainer.className = 'controls-container ol-unselectable';
-
+	controlsContainer.className = 'button-controls ol-unselectable';
 	Object.keys(textKeys).forEach(key => {
 		const container = document.createElement('div'),
 			button = document.createElement('button');
 		button.innerHTML = textKeys[key];
-		button.addEventListener('click', () => {
-			const colorScale = createColorScale(key, colors),
-				countryColors = getCountryColors(colorScale, key);
-			setMapColors(countryColors, layer);
-		});
-		container.className = 'category-container ol-control';
+		button.addEventListener('click', () => updateMap(map, colorRange, layer, key));
+		container.className = 'ol-control';
 		container.appendChild(button);
 		controlsContainer.appendChild(container);
 	});
-
 	return new Control({element: controlsContainer});
+};
+
+
+const addMapControls = (map, layer, colors, keyValues) => {
+	map.addControl(createButtonControls(map, keyValues, colors, layer));
+};
+
+const setMapLegend = (map, scale) => {
+	const legend = MapLegend.legendFromScale(scale),
+		wrapper = document.createElement('div');
+	wrapper.className = 'legend-control';
+	wrapper.appendChild(legend);
+	// todo remove old control
+	map.addControl(new Control({element: wrapper}));
+};
+
+const updateMap = (map, colorRange, layer, key) => {
+	const scale = createColorScale(key, colorRange),
+		countryColors = getCountryColors(scale, key);
+	setMapColors(countryColors, layer);
+	setMapLegend(map, scale);
+};
+
+export const createDataMap = (target, colors, keyValues) => {
+	const vecLayer = createNewVectorLayer(),
+		map = drawNewMap(target, vecLayer),
+		defaultKey = Object.keys(keyValues)[0];
+	addMapControls(map, vecLayer, colors, keyValues);
+	updateMap(map, colors, vecLayer, defaultKey);
+	return map;
 };
