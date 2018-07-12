@@ -2,6 +2,7 @@ import './styles/stylesheet.scss';
 import 'ol/ol.css';
 import * as DataMap from './DataMap';
 import P from './popupMain';
+import './TreeMapChart';
 
 const initMap = () => {
 	const target = 'map',
