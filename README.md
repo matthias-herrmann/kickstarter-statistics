@@ -11,6 +11,11 @@ $ npm install
 $ npm start
 ```
 
+## Run Binaries
+Instead of running a server or build from source it's also possible to download the latest precompiled Binaries [here](https://github.com/Shoggomo/kickstarter-statistics/releases/latest).
+After unzipping just open the `index.html` in your browser.
+
+
 ## Build from source
 The Project can be built with
 ```
