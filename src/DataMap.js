@@ -1,4 +1,5 @@
 import 'ol/ol.css';
+import styles from './styles/variables.scss';
 import Map from 'ol/map';
 import Vector from 'ol/layer/vector';
 import VectorSource from 'ol/source/vector';
@@ -25,6 +26,10 @@ export default class DataMap {
 
 		this.addMapControls(keyValues);
 		this.updateMap(defaultKey);
+	}
+
+	static getMapColors() {
+		return styles.mapColors.split(' ');
 	}
 
 	static correctDomain(min, max, avg) {
