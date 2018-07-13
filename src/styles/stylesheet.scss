@@ -11,12 +11,10 @@ body {
   background-color: transparent;
 }
 
-$col1: red;
-
 .map {
   height: 100vh;
   width: 100%;
-  background-color: lightskyblue;
+  background-color: $map-background;
 }
 
 .button-controls {
@@ -43,12 +41,12 @@ $col1: red;
 
 .arrow_box {
   position: relative;
-  border: 1px solid #003c88;
+  border: 1px solid $popup-border;
   border-radius: 5px;
   padding: 10px;
   opacity: 0.8;
-  background-color: black;
-  color: white;
+  background-color: $popup-background;
+  color: $popup-text;
   overflow: visible;
 
   :after, :before {

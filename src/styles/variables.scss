@@ -1,5 +1,12 @@
 
 $map-colors: #F4E4D8 #EAC7B0 #DFAC88 #D48E5F #A15A28 #79421B #4F290E #231003;
+$map-background: lightskyblue;
+
+$popup-border: #003c88;
+$popup-background: black;
+$popup-text: white;
+
+
 
 :export {
   mapColors: $map-colors;
