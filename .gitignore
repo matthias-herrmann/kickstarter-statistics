@@ -11,3 +11,4 @@
 .idea
 .vscode
 package-lock.json
+/dist
