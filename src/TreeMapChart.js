@@ -3,7 +3,6 @@ import * as d3 from 'd3';
 import data from './assets/officialKickstarterAggregated';
 
 const svg = d3.select('svg');
-
 const width = innerWidth * 0.8; // numbers are relative to the viewport size
 const height = innerHeight * 0.7;
 svg.attr('width', width);
@@ -27,7 +26,6 @@ const format = d3.format(',d');
 
 const sumByCount = (d) => d.count;
 const sumByTotalDollars = (d) => d.totalDollars;
-
 const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
 let treemap = d3.treemap()
@@ -78,17 +76,34 @@ cell.append('text')
 	.attr('clip-path', (d) => 'url(#clip-' + d.data.id + ')') // clipping path restricts region in which paint can be applied
 	.selectAll('tspan')
 	.data((d) => d.data.name.split(/(?=[A-Z](\s|&)+[^A-Z])/g))
-	.enter().append('tspan') // within text element, text and font properties and the current position
+	.enter()
+	.append('tspan') // within text element, text and font properties and the current position
 	.attr('fill', 'whitesmoke')
 	.text((d) => d);
 
-cell.selectAll('tspan')
-	.attr('x', function () {
-		return calculateCenterOfTextInRectangle(this).centerX;
-	}) // center x and y. Not using Es6 function because of this context which is the tspan element.
-	.attr('y', function () {
-		return calculateCenterOfTextInRectangle(this).centerY;
-	}); // TODO: save function in function object where selection is being passed as param - VIOLATION OF DRY
+cell.selectAll('text')
+	.append('tspan')
+	.attr('fill', 'whitesmoke')
+	.attr('isValue', true)
+	.text((d) => '$' + d.data.totalDollars + 'B');
+
+const calculateYPositionOfTspanInRectangle = (tspan) => {
+	const yCenter = calculateCenterOfTextInRectangle(tspan).centerY;
+	const isCategoryName = !tspan.getAttribute('isValue'); // category name is being displayed over the absolute value
+	return isCategoryName ? yCenter - 19/2 : yCenter + 19/2;
+};
+
+const positionTspanElementsInRectangle = () => {
+	cell.selectAll('tspan')
+		.attr('x', function () {
+			return calculateCenterOfTextInRectangle(this).centerX;
+		}) // center x and y. Not using Es6 function because of this context which is the tspan element.
+		.attr('y', function () {
+			return calculateYPositionOfTspanInRectangle(this);
+		}); // TODO: save function in function object where selection is being passed as param - VIOLATION OF DRY
+};
+
+positionTspanElementsInRectangle();
 
 cell.append('title') // Getting displayed on hover
 	.text((d) => titleFromDataObject(d));
@@ -134,7 +149,7 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 						return calculateCenterOfTextInRectangle(this).centerX;
 					}) // VIOLATION OF DRY
 					.attr('y', function () {
-						return calculateCenterOfTextInRectangle(this).centerY;
+						return calculateYPositionOfTspanInRectangle(this);
 					});
 			};
 		});
