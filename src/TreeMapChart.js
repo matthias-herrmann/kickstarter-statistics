@@ -28,12 +28,20 @@ const sumByCount = (d) => d.count;
 const sumByTotalDollars = (d) => d.totalDollars;
 const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
+const valueFormattingFunctions = {
+	'sumByCount': (number) => `${number} projects`,
+	'sumByTotalDollars': (number) => `$${number}B`
+};
+
+const inputSelection = d3.selectAll('input');
+
 let treemap = d3.treemap()
 	.tile(d3.treemapResquarify) // good for comparision, only changes node sizes - not positioning
 	.size([width, height])
 	.round(true)
 	.paddingInner(1);
 
+const getValueOfRadioButtonSelection = () => d3.selectAll('input:checked').node().getAttribute('value');
 
 const calculateCenterOfTextInRectangle = (tspanNode) => {
 	const rectangleNode = tspanNode.parentElement.previousSibling.previousSibling; // tspan is in text element and 2 nodes above is the rectangle
@@ -87,6 +95,13 @@ cell.selectAll('text')
 	.attr('isValue', true)
 	.text((d) => '$' + d.data.totalDollars + 'B');
 
+const updateValueTextInRectangle = () => {
+	const valueOfRadioButtonSelection = getValueOfRadioButtonSelection();
+	const formatValue = valueFormattingFunctions[valueOfRadioButtonSelection];
+	cell.selectAll('tspan[isValue="true"')
+		.text((d) => formatValue(d.value));
+};
+
 const calculateYPositionOfTspanInRectangle = (tspan) => {
 	const yCenter = calculateCenterOfTextInRectangle(tspan).centerY;
 	const isCategoryName = !tspan.getAttribute('isValue'); // category name is being displayed over the absolute value
@@ -108,8 +123,6 @@ positionTspanElementsInRectangle();
 cell.append('title') // Getting displayed on hover
 	.text((d) => titleFromDataObject(d));
 
-const inputSelection = d3.selectAll('input');
-
 inputSelection.data([sumByCount, sumByTotalDollars], function (d) {
 	return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
 })
@@ -130,6 +143,7 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 	cell.selectAll('title')
 		.text(d => titleFromDataObject(d));
 
+	updateValueTextInRectangle();
 	let gTransition = cell.transition()
 		.duration(750);
 
