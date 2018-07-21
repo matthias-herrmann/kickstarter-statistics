@@ -1,144 +1,105 @@
-@import "variables";
-
 body {
   font-family: sans-serif;
   margin: 0;
 }
 
 .header {
-  position: fixed;
-  align-content: center;
-  background-color: transparent;
+  $content-size: 5vmin;
+
+  background: royalblue;
+  border-bottom: 0.1em solid darkblue;
+  margin: 0;
+  width: 100vw;
+  padding: 2vmin;
+
+  * {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  img {
+    height: $content-size;
+  }
+
+  h1 {
+    font-size: $content-size;
+  }
 }
 
 .map {
   height: 100vh;
-  width: 100%;
-  background-color: $map-background;
+  width: 100vw;
+  background-color: lightskyblue;
 }
 
-.button-controls {
-  position: absolute;
+.controls-container {
+  position: absolute !important;
   top: 5.375em;
   left: .5em;
-
-  div {
-    position: relative;
-    display: grid;
-    margin: 0.3em 0;
-
-    button {
-      width: auto;
-      padding: 5%;
-    }
-  }
 }
 
-.legend-control {
-  position: absolute;
-  bottom: 0;
+.category-container {
+  position: relative !important;
+  display: grid;
+  margin: 0.3em 0;
+}
+
+.category-container button {
+  width: auto !important;
+  padding: 10px !important;
 }
 
 .arrow_box {
   position: relative;
-  border: 1px solid $popup-border;
+  background: #000;
+  border: 1px solid #003c88;
+}
+
+.arrow_box:after, .arrow_box:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: #000;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.arrow_box:before {
+  border-color: rgba(0, 60, 136, 0);
+  border-top-color: #003c88;
+  border-width: 11px;
+  margin-left: -11px;
+}
+
+.arrow_box {
   border-radius: 5px;
   padding: 10px;
   opacity: 0.8;
-  background-color: $popup-background;
-  color: $popup-text;
-  overflow: visible;
+  background-color: black;
+  color: white;
+}
 
-  :after, :before {
-    top: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-  }
+#popup-content {
+  max-height: 200px;
+  overflow: auto;
+}
 
-  :after {
-    border-color: rgba(0, 0, 0, 0);
-    border-top-color: #000;
-    border-width: 10px;
-    margin-left: -10px;
-  }
-
-  :before {
-    border-color: rgba(0, 60, 136, 0);
-    border-top-color: #003c88;
-    border-width: 11px;
-    margin-left: -11px;
-  }
-
-  #popup-content {
-    max-height: 300px;
-    overflow: visible;
-
-    th {
-      text-align: left;
-      width: 200px;
-    }
-
-  }
-
-  .arc {
-    text {
-      font: 12px arial;
-      text-anchor: middle;
-    }
-
-    path {
-      stroke: #fff;
-    }
-  }
-
-  .title {
-    fill: green;
-    font-weight: normal;
-  }
-
-  .tooltip {
-    background: #eee;
-    box-shadow: 0 0 5px #999999;
-    color: #333;
-    display: none;
-    font-size: 12px;
-    left: 130px;
-    padding: 10px;
-    position: absolute;
-    text-align: center;
-    top: 95px;
-    width: 80px;
-    z-index: 10;
-  }
-
-  #chart {
-    margin: 10px;
-  }
-  svg {
-    margin: 5px;
-  }
-
-  h1 {
-
-    text-align: center;
-  }
-
-  rect {
-    cursor: pointer;
-    stroke-width: 2px;
-  }
-
-  rect.disabled {
-    fill: transparent !important;
-  }
-
+#popup-content th {
+  text-align: left;
+  width: 125px;
 }
 
 .hidden {
   display: none;
 }
+
