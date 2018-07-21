@@ -1,7 +1,7 @@
 {
   "scripts": {
     "copy-assets": "copyfiles -s -u 2 src/assets/* dist/assets",
-    "start": "npm run copy-assets && webpack && webpack-dev-server --mode development",
+    "start": "npm run copy-assets && webpack && webpack-dev-server --mode development --host 0.0.0.0",
     "build": "npm run copy-assets && webpack --mode production"
   },
   "dependencies": {

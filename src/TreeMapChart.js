@@ -22,8 +22,8 @@ const color = d3.scaleOrdinal(['#9f3857',
 	'#b3a9dc',
 	'#825044',
 	'#f59688']);
-const format = d3.format(',d');
 
+const format = d3.format(',d');
 const sumByCount = (d) => d.count;
 const sumByTotalDollars = (d) => d.totalDollars;
 const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
@@ -51,6 +51,32 @@ const calculateCenterOfTextInRectangle = (tspanNode) => {
 		centerX: centerX,
 		centerY: centerY
 	};
+};
+
+const hideTextsWhichDoNotFit = () => {
+	textOnTilesSelection.nodes()
+		.forEach((textElement) => {
+			if(!textFitsInRectangle(textElement)) {
+				textElement.setAttribute('visibility', 'hidden');
+			} else {
+			    textElement.setAttribute('visibility', 'visible');
+			}
+		});
+};
+
+const textFitsInRectangle = (textElement) => {
+	const tspanChildren = textElement.childNodes;
+	const rectangleNode = textElement.previousSibling.previousSibling; // text element's previous sibling has the rectangle node as previous sibling
+	const rectangleWidth = rectangleNode.getAttribute('width');
+	const rectangleHeight = rectangleNode.getAttribute('height');
+
+	for(let i=0; i < tspanChildren.length; ++i) { // VIOLATION of no raw loops, but can't break forEach
+		const tspan = tspanChildren[i];
+		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 60) {
+			return false;
+		}
+	}
+	return true;
 };
 
 const root = d3.hierarchy(data)
@@ -89,8 +115,9 @@ cell.append('text')
 	.attr('fill', 'whitesmoke')
 	.text((d) => d);
 
-cell.selectAll('text')
-	.append('tspan')
+const textOnTilesSelection = cell.selectAll('text');
+
+textOnTilesSelection.append('tspan')
 	.attr('fill', 'whitesmoke')
 	.attr('isValue', true)
 	.text((d) => '$' + d.data.totalDollars + 'B');
@@ -105,7 +132,7 @@ const updateValueTextInRectangle = () => {
 const calculateYPositionOfTspanInRectangle = (tspan) => {
 	const yCenter = calculateCenterOfTextInRectangle(tspan).centerY;
 	const isCategoryName = !tspan.getAttribute('isValue'); // category name is being displayed over the absolute value
-	return isCategoryName ? yCenter - 19/2 : yCenter + 19/2;
+	return isCategoryName ? yCenter - 19 / 2 : yCenter + 19 / 2;
 };
 
 const positionTspanElementsInRectangle = () => {
@@ -138,7 +165,6 @@ const timeout = d3.timeout(() => {
 
 function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTotalDollars
 	timeout.stop();
-
 	treemap(root.sum(sum));
 	cell.selectAll('title')
 		.text(d => titleFromDataObject(d));
@@ -158,6 +184,7 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 		.tween('positioning', function () {
 			let self = this;
 			return function () {
+			    hideTextsWhichDoNotFit();
 				d3.select(self)
 					.attr('x', function () {
 						return calculateCenterOfTextInRectangle(this).centerX;
@@ -187,7 +214,9 @@ const debounce = function (func, wait, immediate) {
 };
 
 const reRenderAfterResizing = debounce((function () {
-	const selectedElement = inputSelection.filter(function() { return this.checked; }).nodes()[0];
+	const selectedElement = inputSelection.filter(function () {
+		return this.checked;
+	}).nodes()[0];
 	const valueOfSelectedElement = selectedElement.getAttribute('value');
 	treemap.size([innerWidth * 0.8, innerHeight * 0.7]);
 	changed(eval(valueOfSelectedElement));
