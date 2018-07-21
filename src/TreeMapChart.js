@@ -26,11 +26,22 @@ const color = d3.scaleOrdinal(['#9f3857',
 const format = d3.format(',d');
 const sumByCount = (d) => d.count;
 const sumByTotalDollars = (d) => d.totalDollars;
+const sumBySuccessfullDollars = (d) => d.successfullDollars;
+const sumByUnsuccessfullDollars = (d) => d.unsuccessfullDollars;
+const sumBySuccessfullProjects = (d) => d.successfullProjects;
+const sumByUnsuccessfullProjects = (d) => d.unsuccessfullProjects;
 const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
+const dollarFormattingFunction = (number) => `$${number}M`;
+const projectsCountFormattingFunction = (number) => `${number} projects`;
+
 const valueFormattingFunctions = {
-	'sumByCount': (number) => `${number} projects`,
-	'sumByTotalDollars': (number) => `$${number}M`
+	'sumByCount': projectsCountFormattingFunction,
+	'sumByTotalDollars': dollarFormattingFunction,
+	'sumBySuccessfullDollars': dollarFormattingFunction,
+    'sumByUnsuccessfullDollars': dollarFormattingFunction,
+    'sumBySuccessfullProjects': projectsCountFormattingFunction,
+    'sumByUnsuccessfullProjects': projectsCountFormattingFunction
 };
 
 const inputSelection = d3.selectAll('input');
@@ -157,7 +168,7 @@ positionTspanElementsInRectangle();
 cell.append('title') // Getting displayed on hover
 	.text((d) => titleFromDataObject(d));
 
-inputSelection.data([sumByCount, sumByTotalDollars], function (d) {
+inputSelection.data([sumByCount, sumByTotalDollars, sumBySuccessfullDollars, sumByUnsuccessfullDollars, sumBySuccessfullProjects, sumByUnsuccessfullProjects], function (d) {
 	return d ? d.name : this.value; // first time undefined, not working when using es6 anonymous => function syntax
 })
 	.on('change', changed);
