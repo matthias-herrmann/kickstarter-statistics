@@ -53,13 +53,13 @@ const calculateCenterOfTextInRectangle = (tspanNode) => {
 	};
 };
 
-const hideTextsWhichDoNotFit = () => {
+const hideUnhideTextsDependentOnSpace = () => {
 	textOnTilesSelection.nodes()
 		.forEach((textElement) => {
 			if(!textFitsInRectangle(textElement)) {
 				textElement.setAttribute('visibility', 'hidden');
 			} else {
-			    textElement.setAttribute('visibility', 'visible');
+				textElement.setAttribute('visibility', 'visible');
 			}
 		});
 };
@@ -72,7 +72,7 @@ const textFitsInRectangle = (textElement) => {
 
 	for(let i=0; i < tspanChildren.length; ++i) { // VIOLATION of no raw loops, but can't break forEach
 		const tspan = tspanChildren[i];
-		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 60) {
+		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 50) {
 			return false;
 		}
 	}
@@ -117,14 +117,21 @@ cell.append('text')
 
 const textOnTilesSelection = cell.selectAll('text');
 
+const getValueFormattingFunctionForCurrentSelection = () => {
+	const valueOfRadioButtonSelection = getValueOfRadioButtonSelection();
+	return valueFormattingFunctions[valueOfRadioButtonSelection];
+};
+
 textOnTilesSelection.append('tspan')
 	.attr('fill', 'whitesmoke')
 	.attr('isValue', true)
-	.text((d) => '$' + d.data.totalDollars + 'B');
+	.text((d) => {
+	    const formatValue = getValueFormattingFunctionForCurrentSelection();
+	    return formatValue(d.value);
+	});
 
 const updateValueTextInRectangle = () => {
-	const valueOfRadioButtonSelection = getValueOfRadioButtonSelection();
-	const formatValue = valueFormattingFunctions[valueOfRadioButtonSelection];
+	const formatValue = getValueFormattingFunctionForCurrentSelection();
 	cell.selectAll('tspan[isValue="true"')
 		.text((d) => formatValue(d.value));
 };
@@ -184,7 +191,7 @@ function changed(sum) { // function object: e.g. sumByCount, sumBySize, sumByTot
 		.tween('positioning', function () {
 			let self = this;
 			return function () {
-			    hideTextsWhichDoNotFit();
+			    hideUnhideTextsDependentOnSpace();
 				d3.select(self)
 					.attr('x', function () {
 						return calculateCenterOfTextInRectangle(this).centerX;
