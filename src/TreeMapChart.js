@@ -30,7 +30,7 @@ const titleFromDataObject = (d) => d.data.id + '\n' + format(d.value);
 
 const valueFormattingFunctions = {
 	'sumByCount': (number) => `${number} projects`,
-	'sumByTotalDollars': (number) => `$${number}B`
+	'sumByTotalDollars': (number) => `$${number}M`
 };
 
 const inputSelection = d3.selectAll('input');
