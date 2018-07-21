@@ -3,16 +3,21 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>OpenLayers example</title>
+    <title>Kickstarter Statistics</title>
+    <!-- TODO: Remove next line after testing implementation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="main.css" rel="stylesheet"></head>
 
 <body>
+<div class="header"></div>
 <div id="map" class="map">
     <div class="arrow_box" id="popup-container">
         <div id="popup-content">
             <h1 id="header" class="rst"></h1>
-            <h4 id="noData" class="rst"></h4>
-            <table>
+            <h4 id="noData" class="rst hidden"></h4>
+            <div id="chart" class="rst">
+            </div>
+            <table class=" hidden">
                 <tr>
                     <th id="r11" class="rst"></th>
                     <td id="r12" class="rst"></td>
@@ -25,11 +30,24 @@
         </div>
     </div>
 </div>
+
+<!-- arrow indicating that there is more content -->
+<div class="arrow-container animated fadeInDown">
+    <div class="arrow-2">
+        <i class="fa fa-angle-down"></i>
+    </div>
+    <div class="arrow-1 animated hinge infinite zoomIn"></div>
+</div>
+
 <svg id="treeSvg">
 </svg>
 <form>
     <label><input type="radio" name="mode" value="sumByCount" checked> Count</label>
-    <label><input type="radio" name="mode" value="sumByTotalDollars"> Dollars</label>
+    <label><input type="radio" name="mode" value="sumByTotalDollars"> Total dollars</label>
+    <label><input type="radio" name="mode" value="sumBySuccessfullDollars"> Succesfull Dollars</label>
+    <label><input type="radio" name="mode" value="sumByUnsuccessfullDollars"> Unsuccessfull Dollars</label>
+    <label><input type="radio" name="mode" value="sumBySuccessfullProjects"> Successfull Projects</label>
+    <label><input type="radio" name="mode" value="sumByUnsuccessfullProjects"> Unsuccessfull Projects</label>
 </form>
 <script type="text/javascript" src="main.js"></script></body>
 </html>

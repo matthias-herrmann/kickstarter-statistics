@@ -83,7 +83,7 @@ const textFitsInRectangle = (textElement) => {
 
 	for(let i=0; i < tspanChildren.length; ++i) { // VIOLATION of no raw loops, but can't break forEach
 		const tspan = tspanChildren[i];
-		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 50) {
+		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 40) {
 			return false;
 		}
 	}
