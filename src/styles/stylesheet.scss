@@ -198,6 +198,7 @@ body {
 .zoomIn {
   -webkit-animation-name: zoomIn;
   animation-name: zoomIn;
+  animation-iteration-count: infinite;
 }
 
 /* radio buttons as toggle buttons */
