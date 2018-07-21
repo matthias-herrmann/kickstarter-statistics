@@ -162,6 +162,8 @@ inputSelection.data([sumByCount, sumByTotalDollars], function (d) {
 })
 	.on('change', changed);
 
+hideUnhideTextsDependentOnSpace();
+
 // initial selection with nice animation,
 // should be triggered when in view for the first time
 const timeout = d3.timeout(() => {
