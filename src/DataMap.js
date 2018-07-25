@@ -105,8 +105,10 @@ export default class DataMap {
 
 	createButtonControl({key, text}) {
 		const container = document.createElement('div'),
-			button = document.createElement('button');
-		button.innerHTML = text;
+			button = document.createElement('button'),
+			span = document.createElement('span');
+		span.innerHTML = text;
+		button.appendChild(span);
 		button.addEventListener('click', () => this.updateMap(key));
 		container.className = 'ol-control';
 		container.appendChild(button);
