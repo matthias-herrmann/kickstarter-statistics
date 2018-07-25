@@ -7,24 +7,12 @@
     "projects_count": 409,
     "median_pledged": 223.7647594,
     "median_goal": 6000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 4.0
-      },
-      {
-        "state" : "failed",
-        "count" : 256.0
-      },
-      {
-        "state" : "successful",
-        "count" : 112.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 37.0
-      }
-    ]
+    "states": {
+      "suspended": 4.0,
+      "failed": 256.0,
+      "successful": 112.0,
+      "canceled": 37.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa80",
@@ -34,24 +22,12 @@
     "projects_count": 334,
     "median_pledged": 252.29539502,
     "median_goal": 10000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 3.0
-      },
-      {
-        "state" : "failed",
-        "count" : 204.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 47.0
-      },
-      {
-        "state" : "successful",
-        "count" : 80.0
-      }
-    ]
+    "states": {
+      "suspended": 3.0,
+      "failed": 204.0,
+      "canceled": 47.0,
+      "successful": 80.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa81",
@@ -61,24 +37,12 @@
     "projects_count": 752,
     "median_pledged": 385.19882347500004,
     "median_goal": 30000,
-    "states" : [
-      {
-        "state" : "failed",
-        "count" : 378.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 78.0
-      },
-      {
-        "state" : "successful",
-        "count" : 293.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 3.0
-      }
-    ]
+    "states": {
+      "failed": 378.0,
+      "canceled": 78.0,
+      "successful": 293.0,
+      "suspended": 3.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa82",
@@ -88,20 +52,11 @@
     "projects_count": 30,
     "median_pledged": 1689.968268505,
     "median_goal": 427500,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 1.0
-      },
-      {
-        "state" : "failed",
-        "count" : 14.0
-      },
-      {
-        "state" : "successful",
-        "count" : 15.0
-      }
-    ]
+    "states": {
+      "canceled": 1.0,
+      "failed": 14.0,
+      "successful": 15.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa83",
@@ -111,24 +66,12 @@
     "projects_count": 506,
     "median_pledged": 237.66666426,
     "median_goal": 5000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 3.0
-      },
-      {
-        "state" : "successful",
-        "count" : 165.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 50.0
-      },
-      {
-        "state" : "failed",
-        "count" : 288.0
-      }
-    ]
+    "states": {
+      "suspended": 3.0,
+      "successful": 165.0,
+      "canceled": 50.0,
+      "failed": 288.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa84",
@@ -138,24 +81,12 @@
     "projects_count": 1678,
     "median_pledged": 84.70403776,
     "median_goal": 8000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 12.0
-      },
-      {
-        "state" : "successful",
-        "count" : 323.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 179.0
-      },
-      {
-        "state" : "failed",
-        "count" : 1164.0
-      }
-    ]
+    "states": {
+      "suspended": 12.0,
+      "successful": 323.0,
+      "canceled": 179.0,
+      "failed": 1164.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa85",
@@ -165,24 +96,12 @@
     "projects_count": 984,
     "median_pledged": 143.47878215,
     "median_goal": 52500,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 116.0
-      },
-      {
-        "state" : "failed",
-        "count" : 552.0
-      },
-      {
-        "state" : "successful",
-        "count" : 313.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 3.0
-      }
-    ]
+    "states": {
+      "canceled": 116.0,
+      "failed": 552.0,
+      "successful": 313.0,
+      "suspended": 3.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa86",
@@ -192,24 +111,12 @@
     "projects_count": 1849,
     "median_pledged": 596.62952,
     "median_goal": 8000,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 172.0
-      },
-      {
-        "state" : "failed",
-        "count" : 982.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 7.0
-      },
-      {
-        "state" : "successful",
-        "count" : 688.0
-      }
-    ]
+    "states": {
+      "canceled": 172.0,
+      "failed": 982.0,
+      "suspended": 7.0,
+      "successful": 688.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa87",
@@ -219,24 +126,12 @@
     "projects_count": 912,
     "median_pledged": 436.35334121,
     "median_goal": 6000,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 66.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 8.0
-      },
-      {
-        "state" : "failed",
-        "count" : 490.0
-      },
-      {
-        "state" : "successful",
-        "count" : 348.0
-      }
-    ]
+    "states": {
+      "canceled": 66.0,
+      "suspended": 8.0,
+      "failed": 490.0,
+      "successful": 348.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa88",
@@ -246,24 +141,12 @@
     "projects_count": 1401,
     "median_pledged": 147.29676984,
     "median_goal": 6000,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 146.0
-      },
-      {
-        "state" : "failed",
-        "count" : 865.0
-      },
-      {
-        "state" : "successful",
-        "count" : 376.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 14.0
-      }
-    ]
+    "states": {
+      "canceled": 146.0,
+      "failed": 865.0,
+      "successful": 376.0,
+      "suspended": 14.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa89",
@@ -273,24 +156,12 @@
     "projects_count": 188749,
     "median_pledged": 1191,
     "median_goal": 5000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 609.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 10629.0
-      },
-      {
-        "state" : "successful",
-        "count" : 92558.0
-      },
-      {
-        "state" : "failed",
-        "count" : 84953.0
-      }
-    ]
+    "states": {
+      "suspended": 609.0,
+      "canceled": 10629.0,
+      "successful": 92558.0,
+      "failed": 84953.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8a",
@@ -300,20 +171,11 @@
     "projects_count": 33,
     "median_pledged": 1512.0061033,
     "median_goal": 10000,
-    "states" : [
-      {
-        "state" : "failed",
-        "count" : 18.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 1.0
-      },
-      {
-        "state" : "successful",
-        "count" : 14.0
-      }
-    ]
+    "states": {
+      "failed": 18.0,
+      "canceled": 1.0,
+      "successful": 14.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8b",
@@ -323,24 +185,12 @@
     "projects_count": 21218,
     "median_pledged": 749.09105123,
     "median_goal": 3000,
-    "states" : [
-      {
-        "state" : "failed",
-        "count" : 9999.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 97.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 1492.0
-      },
-      {
-        "state" : "successful",
-        "count" : 9630.0
-      }
-    ]
+    "states": {
+      "failed": 9999.0,
+      "suspended": 97.0,
+      "canceled": 1492.0,
+      "successful": 9630.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8c",
@@ -350,24 +200,12 @@
     "projects_count": 4929,
     "median_pledged": 271.66365534,
     "median_goal": 7000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 59.0
-      },
-      {
-        "state" : "successful",
-        "count" : 1624.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 463.0
-      },
-      {
-        "state" : "failed",
-        "count" : 2783.0
-      }
-    ]
+    "states": {
+      "suspended": 59.0,
+      "successful": 1624.0,
+      "canceled": 463.0,
+      "failed": 2783.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8d",
@@ -377,24 +215,12 @@
     "projects_count": 276,
     "median_pledged": 1099.181691825,
     "median_goal": 7000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 5.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 16.0
-      },
-      {
-        "state" : "failed",
-        "count" : 125.0
-      },
-      {
-        "state" : "successful",
-        "count" : 130.0
-      }
-    ]
+    "states": {
+      "suspended": 5.0,
+      "canceled": 16.0,
+      "failed": 125.0,
+      "successful": 130.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8e",
@@ -404,24 +230,12 @@
     "projects_count": 9373,
     "median_pledged": 411.96172,
     "median_goal": 6000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 56.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 880.0
-      },
-      {
-        "state" : "successful",
-        "count" : 3451.0
-      },
-      {
-        "state" : "failed",
-        "count" : 4986.0
-      }
-    ]
+    "states": {
+      "suspended": 56.0,
+      "canceled": 880.0,
+      "successful": 3451.0,
+      "failed": 4986.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8f",
@@ -431,24 +245,12 @@
     "projects_count": 1801,
     "median_pledged": 208.44273216,
     "median_goal": 7500,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 18.0
-      },
-      {
-        "state" : "successful",
-        "count" : 499.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 178.0
-      },
-      {
-        "state" : "failed",
-        "count" : 1106.0
-      }
-    ]
+    "states": {
+      "suspended": 18.0,
+      "successful": 499.0,
+      "canceled": 178.0,
+      "failed": 1106.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa90",
@@ -458,24 +260,12 @@
     "projects_count": 1127,
     "median_pledged": 348.262885,
     "median_goal": 48000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 10.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 93.0
-      },
-      {
-        "state" : "successful",
-        "count" : 410.0
-      },
-      {
-        "state" : "failed",
-        "count" : 614.0
-      }
-    ]
+    "states": {
+      "suspended": 10.0,
+      "canceled": 93.0,
+      "successful": 410.0,
+      "failed": 614.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa91",
@@ -485,24 +275,12 @@
     "projects_count": 2440,
     "median_pledged": 320.40128129000004,
     "median_goal": 7500,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 22.0
-      },
-      {
-        "state" : "failed",
-        "count" : 1436.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 258.0
-      },
-      {
-        "state" : "successful",
-        "count" : 724.0
-      }
-    ]
+    "states": {
+      "suspended": 22.0,
+      "failed": 1436.0,
+      "canceled": 258.0,
+      "successful": 724.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa92",
@@ -512,24 +290,12 @@
     "projects_count": 464,
     "median_pledged": 346.320604005,
     "median_goal": 12000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 7.0
-      },
-      {
-        "state" : "successful",
-        "count" : 138.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 41.0
-      },
-      {
-        "state" : "failed",
-        "count" : 278.0
-      }
-    ]
+    "states": {
+      "suspended": 7.0,
+      "successful": 138.0,
+      "canceled": 41.0,
+      "failed": 278.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa93",
@@ -539,24 +305,12 @@
     "projects_count": 293,
     "median_pledged": 4339.5287215,
     "median_goal": 58000,
-    "states" : [
-      {
-        "state" : "canceled",
-        "count" : 24.0
-      },
-      {
-        "state" : "successful",
-        "count" : 151.0
-      },
-      {
-        "state" : "suspended",
-        "count" : 6.0
-      },
-      {
-        "state" : "failed",
-        "count" : 112.0
-      }
-    ]
+    "states": {
+      "canceled": 24.0,
+      "successful": 151.0,
+      "suspended": 6.0,
+      "failed": 112.0
+    }
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa94",
@@ -566,23 +320,11 @@
     "projects_count": 466,
     "median_pledged": 154.144872,
     "median_goal": 40000,
-    "states" : [
-      {
-        "state" : "suspended",
-        "count" : 6.0
-      },
-      {
-        "state" : "failed",
-        "count" : 262.0
-      },
-      {
-        "state" : "successful",
-        "count" : 144.0
-      },
-      {
-        "state" : "canceled",
-        "count" : 54.0
-      }
-    ]
+    "states": {
+      "suspended": 6.0,
+      "failed": 262.0,
+      "successful": 144.0,
+      "canceled": 54.0
+    }
   }
 ]
