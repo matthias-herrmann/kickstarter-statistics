@@ -40,7 +40,7 @@ export default class Popup {
 				const properties = feature.getProperties();
 				resetMarkup();
 				console.log("properties: ", properties);
-				console.log ("country: ",country);
+				console.log ("country states: ",country['states']);
 				var name = properties['name'];
 				document.getElementById('header').innerHTML = name;
 				var projects;
