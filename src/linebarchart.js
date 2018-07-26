@@ -1,10 +1,11 @@
 import * as d3 from "d3";
 
 export default class Linebarchart{
-	constructor (global_avg, country_avg, global_max, width, height){
+	constructor (global_avg, country_avg, global_max, width, height, title){
 	var width = width,
 		height= height,
-		margin= 35,
+		margin_left=50,
+		margin_right= 35,
 		text_offset = 15,
 		circle_radius = 12,
 		line_height = 32,
@@ -32,9 +33,9 @@ export default class Linebarchart{
 		.attr("height", height);
 
 	var line = svgContainer.append("line")
-		.attr("x1", margin)
+		.attr("x1", margin_left)
 		.attr("y1", height/2)
-		.attr("x2", width-margin)
+		.attr("x2", width-margin_right)
 		.attr("y2", height/2)
 		.attr("stroke-width",3)
 		.attr("stroke", "white");
@@ -48,7 +49,7 @@ export default class Linebarchart{
 	console.log("text: ", text);
 
 	var textLabels = text
-		.attr("x", function(d) { return d.x; })
+		.attr("x", function(d) { return Math.min(d.x, width/2); })
 		.attr("y", function(d) { return d.y;})
 		.text( function (d) { return d.label })
 		.attr("font-family", "sans-serif")
@@ -79,13 +80,31 @@ export default class Linebarchart{
 		.attr("y1", function (d) {return d.y1})
 		.attr("x2", function (d) {return d.x;})
 		.attr("y2", function (d) {return d.y2})
-		.attr("stroke-width", 3)
+		.attr("stroke-width", 1)
 		.attr("stroke", "white");
 
+	addTitle(title);
+	log();
 
+	function log(){
+		console.log(title);
+		console.log("global avg: "+global_avg);
+		console.log("country avg: "+country_avg);
+		console.log("global max: "+global_max)
+	}
+
+	function addTitle(title){
+		svgContainer.append("text")
+			.attr("x", 10)
+			.attr("y", 20)
+			.attr("text-anchor", "start")
+			.style("font-size", "16px")
+			.style("font-weight", "bold")
+			.style("fill","white")
+			.text(title);}
 
 	function calc_x(value){
-		return(value/global_max)*(width-margin*2)+margin}
+		return(value/global_max)*(width-(margin_left+margin_right))+margin_left}
 
 
 }}

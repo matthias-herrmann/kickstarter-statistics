@@ -68,8 +68,8 @@ export default class Popup {
 					//create Charts from data here
 					new PieChart(projects);
 					new PieChart(states);
-					new Linebarchart(global_avg_pledged, country['avg_pledged'], global_max_pledged, 200, 100);
-					new Linebarchart(global_avg_goal, country['avg_goal'], global_max_goal, 200,100);
+					new Linebarchart(global_avg_pledged, country['avg_pledged'], global_max_pledged, 200, 100,'Pledged');
+					new Linebarchart(global_avg_goal, country['avg_goal'], global_max_goal, 200,100, 'Goal');
 
 					overlay.setPosition(e.coordinate);}
 
