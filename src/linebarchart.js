@@ -27,7 +27,7 @@ export default class Linebarchart{
 	if (global_avg>country_avg){rectData[0].fillcolour = "red"}
 	console.log(rectData);
 
-	var svgContainer = d3.select("#chart").append("svg")
+	var svgContainer = d3.select("#chart2").append("svg")
 		.attr("width", width)
 		.attr("height", height);
 

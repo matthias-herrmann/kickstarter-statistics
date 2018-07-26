@@ -1,4 +1,4 @@
-import {countryObject, dataList, max} from './DataManager';
+import {countryObject, dataList, max, getValueList, avg} from './DataManager';
 import Overlay from 'ol/overlay';
 import * as d3 from 'd3';
 import * as scale from 'd3-scale';
@@ -24,7 +24,12 @@ export default class Popup {
 				{label:"cyan", count:566},
 				{label:"pink", count:990},
 			],
-			colors = ['green', 'purple', 'yellow'];
+			colors = ['green', 'purple', 'yellow'],
+			global_max_pledged = max("avg_pledged"),
+			global_avg_pledged = avg("avg_pledged"),
+			global_max_goal = max('avg_goal'),
+			global_avg_goal  =avg('avg_goal');
+
 
 		const overlay = new Overlay({
 			element: document.getElementById('popup-container'),
@@ -40,10 +45,11 @@ export default class Popup {
 				const properties = feature.getProperties();
 				resetMarkup();
 				console.log("properties: ", properties);
-				console.log ("country states: ",country['states']);
 				var name = properties['name'];
 				document.getElementById('header').innerHTML = name;
-				var projects;
+				var projects,
+					states,
+					global_goal;
 				//will be called if user clicked on Country with data
 				if (country != null && country != undefined) {
 					var count= country['projects_count'];
@@ -52,6 +58,18 @@ export default class Popup {
 						{label:'part of total', count: total_projects-count}
 					];
 
+					states = [
+						{label: "canceled", count: country['states']['canceled']},
+						{label: "successful", count: country['states']['successful']},
+						{label: "failed",count:country['states']['failed']},
+						{label:"suspended", count:country['states']['canceled']}
+					];
+
+					//create Charts from data here
+					new PieChart(projects);
+					new PieChart(states);
+					new Linebarchart(global_avg_pledged, country['avg_pledged'], global_max_pledged, 200, 100);
+					new Linebarchart(global_avg_goal, country['avg_goal'], global_max_goal, 200,100);
 
 					overlay.setPosition(e.coordinate);}
 
@@ -62,9 +80,7 @@ export default class Popup {
 					overlay.setPosition();
 
 				}
-				//create Charts from data here
-				new PieChart(projects);
-				new Linebarchart(20000, 15000, 35000, 200, 100);
+
 
 				return feature;
 			},{hitTolerance: 1});
@@ -94,7 +110,6 @@ export default class Popup {
 			el.forEach(e => e.innerHTML='');
 
 		}
-
 
 
 

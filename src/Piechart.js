@@ -29,13 +29,23 @@ export default class PieChart{
 	var legend = addLegend(data, svg, color, width, path, pie, arc);
 	addToolTip(data, path);
 	addAnimation(path,legend, pie, arc, data);
+	//addTitle("test");
 
 	data.forEach(function (d) {
 		d.enabled=true;
-	})
+	});
 
 
-
+function addTitle(title){
+	svg.append("text")
+		.attr("x", (width / 2))
+		.attr("y", 0 - (50/ 2))
+		.attr("text-anchor", "middle")
+		.style("font-size", "16px")
+		.style("text-decoration", "underline")
+		.style("fill","white")
+		.text(title);
+}
 function addLegend(data, svg, color, size){
 	var legendRectSize = Math.max(size/30, 8);
 	var legendSpacing= Math.max(size/60, 4);
