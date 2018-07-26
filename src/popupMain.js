@@ -60,9 +60,9 @@ export default class Popup {
 
 					states = [
 						{label: "canceled", count: country['states']['canceled']},
-						{label: "successful", count: country['states']['successful']},
 						{label: "failed",count:country['states']['failed']},
-						{label:"suspended", count:country['states']['canceled']}
+						{label:"suspended", count:country['states']['canceled']},
+						{label: "successful", count: country['states']['successful']}
 					];
 
 					//create Charts from data here
