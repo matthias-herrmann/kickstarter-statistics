@@ -10,7 +10,15 @@ const rangeValues = scale => {
 	return scale.range().map((color, i) => ({color: color, value: i * l}));
 };
 
-const createLegend = (colorValues) => {
+const isFirstOfList = (e, list) => e === list[0];
+
+const isLastOfList = (e, list) => e === list[list.length - 1];
+
+const getPrefix = (e, list) => isFirstOfList(e, list) ? "≤" : isLastOfList(e, list) ? "≥" : " ";
+
+const addNumberSpaces = number => String(number).replace(/\d{3}$/, ' $&');
+
+const createLegend = (colorValues, unit) => {
 	const textHeightRaw = "1",
 		textHeightUnit = "em",
 		getTextHeight = () => String(textHeightRaw) + textHeightUnit,
@@ -28,7 +36,7 @@ const createLegend = (colorValues) => {
 		.style("fill", d => d.color);
 
 	groupSelection.append("text")
-		.text((d) => `${d.value}`)
+		.text((d) => `${getPrefix(d, colorValues)} ${addNumberSpaces(d.value)} ${unit}`)
 		.attr("y", getTextHeight())
 		.attr("x", getTextHeight());
 
@@ -36,11 +44,11 @@ const createLegend = (colorValues) => {
 	return svg;
 };
 
-export const legendFromScale = scale => {
+export const legendFromScale = (scale, unit) => {
 	const colorValues = rangeValues(scale),
 		roundedValues = colorValues.map(cv => ({
 			...cv,
 			'value': reverseFloor(cv['value'], 2),
 		}));
-	return createLegend(roundedValues);
+	return createLegend(roundedValues, unit);
 };

@@ -14,7 +14,7 @@ import Control from 'ol/control/control';
 import * as db from './DataManager';
 import * as d3Scale from 'd3-scale';
 import * as MapLegend from './MapLegend';
-
+import units from './assets/units';
 
 export default class DataMap {
 
@@ -23,6 +23,7 @@ export default class DataMap {
 		this.colors = colors;
 		this.vecLayer = DataMap.createNewVectorLayer();
 		this.map = this.drawNewMap(target);
+		this.legend = undefined;
 
 		this.addMapControls(keyValues);
 		this.updateMap(defaultKey);
@@ -104,8 +105,10 @@ export default class DataMap {
 
 	createButtonControl({key, text}) {
 		const container = document.createElement('div'),
-			button = document.createElement('button');
-		button.innerHTML = text;
+			button = document.createElement('button'),
+			span = document.createElement('span');
+		span.innerHTML = text;
+		button.appendChild(span);
 		button.addEventListener('click', () => this.updateMap(key));
 		container.className = 'ol-control';
 		container.appendChild(button);
@@ -126,20 +129,23 @@ export default class DataMap {
 		this.map.addControl(this.createButtonControls(keyValues));
 	}
 
-	setMapLegend(scale) {
-		const legend = MapLegend.legendFromScale(scale),
+	setMapLegend(scale, key) {
+		const unit = units[key],
+			legend = MapLegend.legendFromScale(scale, unit),
 			wrapper = document.createElement('div');
 		wrapper.className = 'legend-control';
 		wrapper.appendChild(legend);
-		// todo remove old control
-		this.map.addControl(new Control({element: wrapper}));
+
+		this.legend && this.map.removeControl(this.legend);
+		this.legend = new Control({element: wrapper});
+		this.map.addControl(this.legend);
 	}
 
 	updateMap(key) {
 		const scale = DataMap.createColorScale(key, this.colors),
 			countryColors = DataMap.getCountryColors(scale, key);
 		this.setMapColors(countryColors);
-		this.setMapLegend(scale);	// todo add unit
+		this.setMapLegend(scale, key);
 	}
 
 }

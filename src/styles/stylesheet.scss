@@ -1,7 +1,7 @@
 @import "variables";
 
 body {
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   margin: 0;
 }
 
@@ -10,8 +10,6 @@ body {
   align-content: center;
   background-color: transparent;
 }
-
-$col1: red;
 
 .map {
   height: 100vh;
@@ -30,7 +28,7 @@ $col1: red;
     margin: 0.3em 0;
 
     button {
-      width: auto;
+      width: max-content;
       padding: 5%;
     }
   }
