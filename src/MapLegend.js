@@ -24,6 +24,7 @@ const createLegend = (colorValues, unit) => {
 		getTextHeight = () => String(textHeightRaw) + textHeightUnit,
 		svg = document.createElementNS(d3.namespaces.svg, 'svg'),
 		groupSelection = d3.select(svg)
+			.attr("width", "8em")
 			.selectAll("div")
 			.data(colorValues)
 			.enter()
