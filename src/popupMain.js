@@ -44,7 +44,6 @@ export default class Popup {
 				const country = countries[feature.getId()];
 				const properties = feature.getProperties();
 				resetMarkup();
-				console.log("properties: ", properties);
 				var name = properties['name'];
 				document.getElementById('header').innerHTML = name;
 				var projects,
@@ -75,7 +74,7 @@ export default class Popup {
 
 				//will be called if there is no data for that particular country
 					else {
-					console.log("n0Data");
+
 					document.getElementById('noData').innerHTML='[no Data]';
 					overlay.setPosition();
 
@@ -101,7 +100,6 @@ export default class Popup {
 
 
 		function closePopup(overlay){
-			console.log("worked");
 			overlay.setPosition()
 		}
 

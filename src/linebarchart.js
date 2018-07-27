@@ -26,7 +26,7 @@ export default class Linebarchart{
 		{"x":lineData[2].x,"y":lineData[2].y1-text_offset,"label":"country avg"}
 		];
 	if (global_avg>country_avg){rectData[0].fillcolour = "red"}
-	console.log(rectData);
+
 
 	var svgContainer = d3.select("#chart2").append("svg")
 		.attr("width", width)
@@ -46,7 +46,6 @@ export default class Linebarchart{
 		.data(labelData)
 		.enter()
 		.append("text");
-	console.log("text: ", text);
 
 	var textLabels = text
 		.attr("x", function(d) { return Math.min(d.x, width/2); })
@@ -84,14 +83,8 @@ export default class Linebarchart{
 		.attr("stroke", "white");
 
 	addTitle(title);
-	log();
 
-	function log(){
-		console.log(title);
-		console.log("global avg: "+global_avg);
-		console.log("country avg: "+country_avg);
-		console.log("global max: "+global_max)
-	}
+
 
 	function addTitle(title){
 		svgContainer.append("text")

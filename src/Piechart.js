@@ -125,19 +125,18 @@ function addToolTip(data, path) {
 function addAnimation(path, legend, pie, arc, data){
 	legend.on('click', function(label){
 
-		var rect = d3.select(this);
+		var rect = d3.select(this).select("rect");
 		var enabled = true;
 		var totalEnabled = d3.sum(data.map(function(d) {
 			return (d.enabled) ? 1 : 0;
 		}));
 
 		if (rect.attr('class') === 'disabled') {
-			rect.attr('class', 'enabled');
-			console.log(rect.attr('class'));
+			rect.attr('class', '');
+
 		} else {
 			if (totalEnabled < 2) return;
 			rect.attr('class', 'disabled');
-			rect.attr('width',300);
 			enabled = false;
 		}
 
