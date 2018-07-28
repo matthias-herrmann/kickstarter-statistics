@@ -1,17 +1,17 @@
 [
-   { axis: "Games", value: 36.84},
-   { axis: "Design", value: 36.01},
-   { axis: "Technology", value: 20.05},
-   { axis: "Film & Video", value: 37.24},
-   { axis: "Music", value: 49.55},
-   { axis: "Fashion", value: 25.47},
-   { axis: "Publishing", value: 31.34},
-   { axis: "Food", value: 24.93},
-   { axis: "Art", value: 41.57},
-   { axis: "Comics", value: 55.68},
-   { axis: "Theater", value: 59.79},
-   { axis: "Photography", value: 31.00},
-   { axis: "Crafts", value: 24.15},
-   { axis: "Journalism", value: 21.78},
-   { axis: "Dance", value: 61.93}
- ]
+    { "axis": "Games", "value": 36.84},
+     { "axis": "Design", "value": 36.01},
+     { "axis": "Technology", "value": 20.05},
+     { "axis": "Film & Video", "value": 37.24},
+     { "axis": "Music", "value": 49.55},
+     { "axis": "Fashion", "value": 25.47},
+     { "axis": "Publishing", "value": 31.34},
+     { "axis": "Food", "value": 24.93},
+     { "axis": "Art", "value": 41.57},
+     { "axis": "Comics", "value": 55.68},
+     { "axis": "Theater", "value": 59.79},
+     { "axis": "Photography", "value": 31.00},
+     { "axis": "Crafts", "value": 24.15},
+     { "axis": "Journalism", "value": 21.78},
+     { "axis": "Dance", "value": 61.93}
+  ]
