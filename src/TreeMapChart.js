@@ -39,12 +39,12 @@ const valueFormattingFunctions = {
 	'sumByCount': projectsCountFormattingFunction,
 	'sumByTotalDollars': dollarFormattingFunction,
 	'sumBySuccessfullDollars': dollarFormattingFunction,
-    'sumByUnsuccessfullDollars': dollarFormattingFunction,
-    'sumBySuccessfullProjects': projectsCountFormattingFunction,
-    'sumByUnsuccessfullProjects': projectsCountFormattingFunction
+	'sumByUnsuccessfullDollars': dollarFormattingFunction,
+	'sumBySuccessfullProjects': projectsCountFormattingFunction,
+	'sumByUnsuccessfullProjects': projectsCountFormattingFunction
 };
 
-const inputSelection = d3.selectAll('input');
+const inputSelection = d3.selectAll('.radio-group>input');
 
 let treemap = d3.treemap()
 	.tile(d3.treemapResquarify) // good for comparision, only changes node sizes - not positioning
