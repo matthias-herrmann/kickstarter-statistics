@@ -79,7 +79,7 @@ body {
   }
 
   #popup-content {
-    max-height: 500px;
+   // max-height: 500px;
     overflow: visible;
 
     th {
@@ -140,6 +140,14 @@ body {
     fill: transparent !important;
   }
 
+div.subheader h3{
+  text-align: center;
+}
+  div.subheader{
+    display: inline;
+    float: right;
+    width: 50%;
+  }
 }
 
 .hidden {

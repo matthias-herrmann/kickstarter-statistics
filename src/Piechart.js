@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import * as globalData from "assets/data_global"
 export default class PieChart{
 	constructor(data){
 	var width = Math.max(data.length*30,200);
