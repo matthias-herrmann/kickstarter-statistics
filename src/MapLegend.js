@@ -7,7 +7,7 @@ const reverseFloor = (num, restDigit) => roundToDigit(num, -(String(Math.floor(n
 const rangeValues = scale => {
 	const [min, max] = scale.domain(),
 		l = (max - min) / scale.range().length;
-	return scale.range().map((color, i) => ({color: color, value: i * l}));
+	return scale.range().map((color, i) => ({color: color, value: (i+1) * l}));
 };
 
 const isFirstOfList = (e, list) => e === list[0];
@@ -19,8 +19,9 @@ const getPrefix = (e, list) => isFirstOfList(e, list) ? "≤" : isLastOfList(e, 
 const addNumberSpaces = number => String(number).replace(/\d{3}$/, ' $&');
 
 const createLegend = (colorValues, unit) => {
-	const textHeightRaw = "1",
+	const textHeightRaw = 1,
 		textHeightUnit = "em",
+		verticalSpace = 0.1,
 		getTextHeight = () => String(textHeightRaw) + textHeightUnit,
 		svg = document.createElementNS(d3.namespaces.svg, 'svg'),
 		groupSelection = d3.select(svg)
@@ -29,7 +30,7 @@ const createLegend = (colorValues, unit) => {
 			.data(colorValues)
 			.enter()
 			.append("g")
-			.style("transform", (_, i) => `translate(0,${i * textHeightRaw}${textHeightUnit})`);
+			.style("transform", (_, i) => `translate(0,${i * (textHeightRaw + verticalSpace)}${textHeightUnit})`);
 
 	groupSelection.append("rect")
 		.attr("width", getTextHeight())
@@ -39,7 +40,7 @@ const createLegend = (colorValues, unit) => {
 	groupSelection.append("text")
 		.text((d) => `${getPrefix(d, colorValues)} ${addNumberSpaces(d.value)} ${unit}`)
 		.attr("y", getTextHeight())
-		.attr("x", getTextHeight());
+		.attr("x", `${String(textHeightRaw + 0.5)}${textHeightUnit}`);
 
 
 	return svg;
