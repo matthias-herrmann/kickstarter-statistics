@@ -5,7 +5,7 @@ export default class Linebarchart{
 	var width = width,
 		height= height,
 		margin_left=50,
-		margin_right= 35,
+		margin_right= 5,
 		text_offset = 15,
 		circle_radius = 12,
 		line_height = 32,
@@ -27,7 +27,6 @@ export default class Linebarchart{
 		];
 	if (global_avg>country_avg){rectData[0].fillcolour = "red"}
 
-
 	var svgContainer = d3.select("#chart2").append("svg")
 		.attr("width", width)
 		.attr("height", height);
@@ -39,7 +38,6 @@ export default class Linebarchart{
 		.attr("y2", height/2)
 		.attr("stroke-width",3)
 		.attr("stroke", "white");
-
 
 	var text = svgContainer
 		.selectAll("text")
@@ -83,8 +81,6 @@ export default class Linebarchart{
 		.attr("stroke", "white");
 
 	addTitle(title);
-
-
 
 	function addTitle(title){
 		svgContainer.append("text")
