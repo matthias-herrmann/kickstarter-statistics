@@ -48,6 +48,7 @@ body {
   background-color: $popup-background;
   color: $popup-text;
   overflow: visible;
+  width:450px;
 
   :after, :before {
     top: 100%;
@@ -127,7 +128,7 @@ body {
     text-align: center;
   }
 
-  rect {
+  rect.legendRect {
     cursor: pointer;
     stroke-width: 2px;
   }

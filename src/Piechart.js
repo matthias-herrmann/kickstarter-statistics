@@ -1,5 +1,4 @@
 import * as d3 from "d3";
-import * as globalData from "assets/data_global"
 export default class PieChart{
 	constructor(data){
 	var width = Math.max(data.length*30,200);
@@ -69,7 +68,9 @@ function addLegend(data, svg, color, size){
 		.attr('height', legendRectSize)
 		.style('fill', color)
 		.style('stroke', color)
-		.attr('class', 'enabled');
+		.attr('class', 'enabled')
+		.attr("class","legendRect");
+
 	legend.append('text')
 		.style("font-size", Math.max(fontSize,11) +"px")
 		.attr('x', legendRectSize + legendSpacing)

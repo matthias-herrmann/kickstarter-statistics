@@ -2,6 +2,8 @@ import {countryObject, dataList, max, getValueList, avg} from './DataManager';
 import Overlay from 'ol/overlay';
 import * as d3 from 'd3';
 import * as scale from 'd3-scale';
+import * as globalData from "./assets/data_global";
+
 import Linebarchart from "./linebarchart";
 import PieChart from "./Piechart";
 export default class Popup {
@@ -11,7 +13,7 @@ export default class Popup {
 			countryList = dataList(),
 			width = 400,
 			height = 400,
-			total_projects = totalprojects(countryList),
+			total_projects = globalData["projects_count"],
 			dataset = [
 				{label: "mice", count: 5000},
 				{label: "cats", count: 2222},
@@ -26,9 +28,10 @@ export default class Popup {
 			],
 			colors = ['green', 'purple', 'yellow'],
 			global_max_pledged = max("avg_pledged"),
-			global_avg_pledged = avg("avg_pledged"),
+			global_avg_pledged = globalData["avg_pledged"],
 			global_max_goal = max('avg_goal'),
-			global_avg_goal  =avg('avg_goal');
+			global_avg_goal  =globalData["avg_goal"];
+
 
 
 		const overlay = new Overlay({
@@ -37,6 +40,8 @@ export default class Popup {
 			offset: [0, -10],
 			autoPan: true
 		});
+
+
 
 		olMap.addOverlay(overlay);
 		olMap.on('click', function (e) {
@@ -63,7 +68,12 @@ export default class Popup {
 						{label:"suspended", count:country['states']['canceled']},
 						{label: "successful", count: country['states']['successful']}
 					];
-					console.log(total_projects);
+					console.log("total projects: "+total_projects);
+					console.log("global average pldged: "+global_avg_pledged);
+					console.log("global average goal: "+global_avg_goal);
+					console.log("country avg pledged: "+country['avg_pledged']);
+					console.log("country avg goal: "+country['avg_goal']);
+
 
 					//create Charts from data here
 					new PieChart(projects);
