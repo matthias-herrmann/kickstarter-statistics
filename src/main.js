@@ -4,6 +4,7 @@ import DataMap from './DataMap';
 import P from './popupMain';
 import './TreeMapChart';
 import './RadarChart';
+import './LaunchedAtBar';
 import './MoreContentArrow';
 
 const initMap = () => {
