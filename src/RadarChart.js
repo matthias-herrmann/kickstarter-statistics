@@ -77,7 +77,7 @@ var RadarChart = {
 
 		//Text indicating at what % each level is
 		for(var j=0; j<cfg.levels; j++){
-			var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+			levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
 			g.selectAll('.levels')
 				.data([1]) //dummy data
 				.enter()
@@ -120,9 +120,9 @@ var RadarChart = {
 			.attr('x', function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
 			.attr('y', function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 
-
+		var dataValues;
 		d.forEach(function(y, x){
-			var dataValues = [];
+			dataValues = [];
 			g.selectAll('.nodes')
 				.data(y, function(j, i){
 					dataValues.push([
@@ -196,7 +196,7 @@ var RadarChart = {
 						.transition(200)
 						.style('opacity', 1);
 
-					z = 'polygon.'+d3.select(this).attr('class');
+					var z = 'polygon.'+d3.select(this).attr('class');
 					g.selectAll('polygon')
 						.transition(200)
 						.style('fill-opacity', 0.1);
@@ -228,7 +228,7 @@ var RadarChart = {
 var w = 500,
 	h = 500;
 
-var colorscale = ['#9f3857',
+var colorscale = d3.scaleOrdinal(['#9f3857',
 	'#01b92f',
 	'#354ed4',
 	'#cbae09',
@@ -241,7 +241,7 @@ var colorscale = ['#9f3857',
 	'#586222',
 	'#b3a9dc',
 	'#825044',
-	'#f59688'];
+	'#f59688']);
 
 //Legend titles
 var LegendOptions = ['Smartphone','Tablet'];
@@ -309,3 +309,50 @@ var mycfg = {
 //Call function to draw the Radar chart
 //Will expect that data is in %'s
 RadarChart.draw('#radar', d, mycfg);
+
+
+var svg = d3.select('#radarWrapper')
+	.selectAll('svg')
+	.append('svg')
+	.attr('width', w+300)
+	.attr('height', h);
+
+//Create the title for the legend
+var text = svg.append('text')
+	.attr('class', 'title')
+	.attr('transform', 'translate(90,0)')
+	.attr('x', w - 70)
+	.attr('y', 10)
+	.attr('font-size', '12px')
+	.attr('fill', '#404040')
+	.text('What % of owners use a specific service in a week');
+
+//Initiate Legend
+var legend = svg.append('g')
+	.attr('class', 'legend')
+	.attr('height', 100)
+	.attr('width', 200)
+	.attr('transform', 'translate(90,20)')
+;
+//Create colour squares
+legend.selectAll('rect')
+	.data(LegendOptions)
+	.enter()
+	.append('rect')
+	.attr('x', w - 65)
+	.attr('y', function(d, i){ return i * 20;})
+	.attr('width', 10)
+	.attr('height', 10)
+	.style('fill', function(d, i){ return colorscale(i);})
+;
+//Create text next to squares
+legend.selectAll('text')
+	.data(LegendOptions)
+	.enter()
+	.append('text')
+	.attr('x', w - 52)
+	.attr('y', function(d, i){ return i * 20 + 9;})
+	.attr('font-size', '11px')
+	.attr('fill', '#737373')
+	.text(function(d) { return d; })
+;
