@@ -125,7 +125,6 @@ body {
   }
 
   h1 {
-
     text-align: center;
   }
 
@@ -307,7 +306,7 @@ label:hover {
   cursor: pointer;
 }
 
-input:checked + label {
+input:checked + .tabLabel {
   color: #555;
   border: 1px solid #ddd;
   border-top: 2px solid orange;
