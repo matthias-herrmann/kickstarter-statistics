@@ -3,6 +3,7 @@ import 'ol/ol.css';
 import DataMap from './DataMap';
 import P from './popupMain';
 import './TreeMapChart';
+import './RadarChart';
 import './MoreContentArrow';
 
 const initMap = () => {
