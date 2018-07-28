@@ -156,51 +156,6 @@ body {
   color: #006064;
 }
 
-/* Custom Animate.css */
-
-.animated.hinge {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-}
-
-@-webkit-keyframes zoomIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.4, .4, .4);
-    transform: scale3d(.4, .4, .4);
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes zoomIn {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale3d(.4, .4, .4);
-    transform: scale3d(.4, .4, .4);
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-.zoomIn {
-  -webkit-animation-name: zoomIn;
-  animation-name: zoomIn;
-  animation-iteration-count: infinite;
-}
-
 /* radio buttons as toggle buttons */
 .radio-group {
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
