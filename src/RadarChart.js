@@ -18,20 +18,7 @@ var RadarChart = {
 			TranslateY: 30,
 			ExtraWidthX: 100,
 			ExtraWidthY: 100,
-			color: d3.scaleOrdinal(['#00BCD4',
-				'#01b92f',
-				'#354ed4',
-				'#cbae09',
-				'#c38dff',
-				'#c87800',
-				'#006aa9',
-				'#ae3b00',
-				'#00c19b',
-				'#ff557a',
-				'#586222',
-				'#b3a9dc',
-				'#825044',
-				'#f59688'])
+			color: d3.scaleOrdinal(['#98FB98'])
 		};
 
 		if('undefined' !== typeof options){
@@ -45,7 +32,7 @@ var RadarChart = {
 		var allAxis = (d[0].map(function(i, j){return i.axis;}));
 		var total = allAxis.length;
 		var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
-		var Format = d3.format('%');
+		var Format = d3.format('.2f');
 		d3.select(id).select('svg').remove();
 
 		var g = d3.select(id)
@@ -229,20 +216,7 @@ var RadarChart = {
 var w = 500,
 	h = 500;
 
-var colorscale = d3.scaleOrdinal(['#00BCD4',
-	'#01b92f',
-	'#354ed4',
-	'#cbae09',
-	'#c38dff',
-	'#c87800',
-	'#006aa9',
-	'#ae3b00',
-	'#00c19b',
-	'#ff557a',
-	'#586222',
-	'#b3a9dc',
-	'#825044',
-	'#f59688']);
+var colorscale = d3.scaleOrdinal(['#98FB98']);
 
 //Legend titles
 var LegendOptions = ['Successrate'];
