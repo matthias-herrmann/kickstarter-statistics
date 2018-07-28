@@ -2,7 +2,7 @@
 import * as d3 from 'd3';
 import data from './assets/officialKickstarterAggregated';
 
-const svg = d3.select('svg');
+const svg = d3.select('#treeSvg');
 const width = innerWidth * 0.8; // numbers are relative to the viewport size
 const height = innerHeight * 0.7;
 svg.attr('width', width);
@@ -39,12 +39,12 @@ const valueFormattingFunctions = {
 	'sumByCount': projectsCountFormattingFunction,
 	'sumByTotalDollars': dollarFormattingFunction,
 	'sumBySuccessfullDollars': dollarFormattingFunction,
-    'sumByUnsuccessfullDollars': dollarFormattingFunction,
-    'sumBySuccessfullProjects': projectsCountFormattingFunction,
-    'sumByUnsuccessfullProjects': projectsCountFormattingFunction
+	'sumByUnsuccessfullDollars': dollarFormattingFunction,
+	'sumBySuccessfullProjects': projectsCountFormattingFunction,
+	'sumByUnsuccessfullProjects': projectsCountFormattingFunction
 };
 
-const inputSelection = d3.selectAll('input');
+const inputSelection = d3.selectAll('.radio-group>input');
 
 let treemap = d3.treemap()
 	.tile(d3.treemapResquarify) // good for comparision, only changes node sizes - not positioning
@@ -52,7 +52,7 @@ let treemap = d3.treemap()
 	.round(true)
 	.paddingInner(1);
 
-const getValueOfRadioButtonSelection = () => d3.selectAll('input:checked').node().getAttribute('value');
+const getValueOfRadioButtonSelection = () => d3.selectAll('.radio-group>input:checked').node().getAttribute('value');
 
 const calculateCenterOfTextInRectangle = (tspanNode) => {
 	const rectangleNode = tspanNode.parentElement.previousSibling.previousSibling; // tspan is in text element and 2 nodes above is the rectangle
@@ -83,7 +83,7 @@ const textFitsInRectangle = (textElement) => {
 
 	for(let i=0; i < tspanChildren.length; ++i) { // VIOLATION of no raw loops, but can't break forEach
 		const tspan = tspanChildren[i];
-		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 50) {
+		if(tspan.getComputedTextLength() > rectangleWidth || rectangleHeight < 40) {
 			return false;
 		}
 	}

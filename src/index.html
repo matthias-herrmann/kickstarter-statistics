@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Kickstarter Statistics</title>
+    <!-- TODO: Remove next line after testing implementation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css"/>
 </head>
 
 <body>
@@ -25,15 +28,56 @@
         </div>
     </div>
 </div>
-<svg id="treeSvg">
-</svg>
-<form>
-    <label><input type="radio" name="mode" value="sumByCount" checked> Count</label>
-    <label><input type="radio" name="mode" value="sumByTotalDollars"> Total dollars</label>
-    <label><input type="radio" name="mode" value="sumBySuccessfullDollars"> Succesfull Dollars</label>
-    <label><input type="radio" name="mode" value="sumByUnsuccessfullDollars"> Unsuccessfull Dollars</label>
-    <label><input type="radio" name="mode" value="sumBySuccessfullProjects"> Successfull Projects</label>
-    <label><input type="radio" name="mode" value="sumByUnsuccessfullProjects"> Unsuccessfull Projects</label>
-</form>
+
+<!-- arrow indicating that there is more content -->
+<div class="arrow-container animated fadeInDown">
+    <div class="arrow-2">
+        <i class="fa fa-angle-down"></i>
+    </div>
+</div>
+
+
+
+
+
+<input id="tab1" type="radio" name="tabs" checked>
+<label for="tab1">Treemap</label>
+
+<input id="tab2" type="radio" name="tabs">
+<label for="tab2">Successrate</label>
+
+<input id="tab3" type="radio" name="tabs">
+<label for="tab3">Launched At Hours</label>
+
+
+<section id="content1">
+    <div>
+        <p><i class="fa fa-info"></i>Each box represents a category. The size of the box is proportional to it`s value. The data which has been used
+        is from the official kickstarter site.</p>
+    </div>
+    <svg id="treeSvg" style="padding: 10px;">
+    </svg>
+    <form>
+        <div class="radio-group">
+            <input type="radio" name="mode" value="sumByCount" id="option-count" checked><label for="option-count"> Count</label>
+            <input type="radio" name="mode" value="sumByTotalDollars" id="option-total"><label for="option-total">Total dollars</label>
+            <input type="radio" name="mode" value="sumBySuccessfullDollars" id="option-success-dollars"> <label for="option-success-dollars">Succesfull Dollars</label>
+            <input type="radio" name="mode" value="sumByUnsuccessfullDollars" id="option-unsuccess-dollars"> <label for="option-unsuccess-dollars"> Unsuccessfull Dollars</label>
+            <input type="radio" name="mode" value="sumBySuccessfullProjects" id="option-success">  <label for="option-success">Successfull Projects</label>
+            <input type="radio" name="mode" value="sumByUnsuccessfullProjects" id="option-unsuccess"><label for="option-unsuccess"> Unsuccessfull Projects</label>
+        </div>
+    </form>
+</section>
+
+<section id="content2">
+    <div id="radarWrapper">
+        <div id="radar"></div>
+    </div>
+</section>
+
+<section id="content3">
+   <svg id="barSvg" width="960" height="500"></svg>
+</section>
+
 </body>
 </html>
