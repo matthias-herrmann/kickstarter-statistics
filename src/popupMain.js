@@ -63,6 +63,7 @@ export default class Popup {
 						{label:"suspended", count:country['states']['canceled']},
 						{label: "successful", count: country['states']['successful']}
 					];
+					console.log(total_projects);
 
 					//create Charts from data here
 					new PieChart(projects);
@@ -87,9 +88,7 @@ export default class Popup {
 
 
 
-			document.getElementById('header').addEventListener('click', function() {
-				overlay.setPosition();
-			});
+
 
 			//if no country is clicked popup will close
 			if (feature==undefined){overlay.setPosition()}
