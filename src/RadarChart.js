@@ -1,6 +1,8 @@
 import * as d3 from 'd3';
 import data from './assets/officialKickstarterSuccessrates';
 
+// http://bl.ocks.org/nbremer/6506614
+
 const RadarChart = {
 	draw: function(id, d, options){
 		const cfg = {
