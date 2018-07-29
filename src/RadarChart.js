@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 import data from './assets/officialKickstarterSuccessrates';
 
-var RadarChart = {
+const RadarChart = {
 	draw: function(id, d, options){
-		var cfg = {
+		const cfg = {
 			radius: 5,
 			w: 600,
 			h: 600,
@@ -22,20 +22,20 @@ var RadarChart = {
 		};
 
 		if('undefined' !== typeof options){
-			for(var i in options){
+			for(let i in options){
 				if('undefined' !== typeof options[i]){
 					cfg[i] = options[i];
 				}
 			}
 		}
 		cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}));}));
-		var allAxis = (d[0].map(function(i, j){return i.axis;}));
-		var total = allAxis.length;
-		var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
-		var Format = d3.format('.2f');
+		const allAxis = (d[0].map(function(i, j){return i.axis;}));
+		const total = allAxis.length;
+		const radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+		const Format = d3.format('.2f');
 		d3.select(id).select('svg').remove();
 
-		var g = d3.select(id)
+		const g = d3.select(id)
 			.append('svg')
 			.attr('width', cfg.w+cfg.ExtraWidthX)
 			.attr('height', cfg.h+cfg.ExtraWidthY)
@@ -43,10 +43,10 @@ var RadarChart = {
 			.attr('transform', 'translate(' + cfg.TranslateX + ',' + cfg.TranslateY + ')');
         
 
-		var tooltip;
+		let tooltip;
 
 		//Circular segments
-		for(var j=0; j<cfg.levels-1; j++){
+		for(let j=0; j<cfg.levels-1; j++){
 			var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
 			g.selectAll('.levels')
 				.data(allAxis)
@@ -80,9 +80,9 @@ var RadarChart = {
 				.text(Format((j+1)*cfg.maxValue/cfg.levels));
 		}
 
-		var series = 0;
+		let series = 0;
 
-		var axis = g.selectAll('.axis')
+		let axis = g.selectAll('.axis')
 			.data(allAxis)
 			.enter()
 			.append('g')
@@ -127,8 +127,8 @@ var RadarChart = {
 				.style('stroke-width', '2px')
 				.style('stroke', cfg.color(series))
 				.attr('points',function(d) {
-					var str='';
-					for(var pti=0;pti<d.length;pti++){
+					let str='';
+					for(let pti=0;pti<d.length;pti++){
 						str=str+d[pti][0]+','+d[pti][1]+' ';
 					}
 					return str;
@@ -136,7 +136,7 @@ var RadarChart = {
 				.style('fill', function(j, i){return cfg.color(series);})
 				.style('fill-opacity', cfg.opacityArea)
 				.on('mouseover', function (d){
-					z = 'polygon.'+d3.select(this).attr('class');
+					let z = 'polygon.'+d3.select(this).attr('class');
 					g.selectAll('polygon')
 						.transition(200)
 						.style('fill-opacity', 0.1);
@@ -174,8 +174,8 @@ var RadarChart = {
 				.attr('data-id', function(j){return j.axis;})
 				.style('fill', cfg.color(series)).style('fill-opacity', .9)
 				.on('mouseover', function (d){
-					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
-					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+					let newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+					let newY =  parseFloat(d3.select(this).attr('cy')) - 5;
 
 					tooltip
 						.attr('x', newX)
@@ -184,7 +184,7 @@ var RadarChart = {
 						.transition(200)
 						.style('opacity', 1);
 
-					var z = 'polygon.'+d3.select(this).attr('class');
+					let z = 'polygon.'+d3.select(this).attr('class');
 					g.selectAll('polygon')
 						.transition(200)
 						.style('fill-opacity', 0.1);
@@ -213,16 +213,16 @@ var RadarChart = {
 	}
 };
 
-var w = 500,
+const w = 500,
 	h = 500;
 
-var colorscale = d3.scaleOrdinal(['#98FB98']);
+const colorscale = d3.scaleOrdinal(['#98FB98']);
 
 //Legend titles
-var LegendOptions = ['Successrate'];
+const LegendOptions = ['Successrate'];
 
 //Data
-var d = [
+let d = [
 	data
 ];
 
@@ -240,14 +240,14 @@ var mycfg = {
 RadarChart.draw('#radar', d, mycfg);
 
 
-var svg = d3.select('#radarWrapper')
+const svg = d3.select('#radarWrapper')
 	.selectAll('svg')
 	.append('svg')
 	.attr('width', w+300)
 	.attr('height', h);
 
 //Create the title for the legend
-var text = svg.append('text')
+const text = svg.append('text')
 	.attr('class', 'title')
 	.attr('transform', 'translate(90,0)')
 	.attr('x', w - 70)
@@ -257,7 +257,7 @@ var text = svg.append('text')
 	.text('Successrate in % of projects in category.');
 
 //Initiate Legend
-var legend = svg.append('g')
+const legend = svg.append('g')
 	.attr('class', 'legend')
 	.attr('height', 100)
 	.attr('width', 200)
