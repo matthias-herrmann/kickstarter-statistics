@@ -68,7 +68,9 @@ function addLegend(data, svg, color, size){
 		.attr('height', legendRectSize)
 		.style('fill', color)
 		.style('stroke', color)
-		.attr('class', 'enabled');
+		.attr('class', 'enabled')
+		.attr("class","legendRect");
+
 	legend.append('text')
 		.style("font-size", Math.max(fontSize,11) +"px")
 		.attr('x', legendRectSize + legendSpacing)

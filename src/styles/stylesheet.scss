@@ -28,16 +28,19 @@ body {
     margin: 0.3em 0;
 
     button {
-      width: auto;
-      padding: 5%;
+      width: 8em;
     }
   }
 }
 
 .legend-control {
   position: absolute;
-  bottom: 0;
-  width: 8em;
+  bottom: -.5em;
+  left: .5em;
+  width: auto;
+  padding: 0.3em;
+  border-radius: .4em;
+  background-color: rgba(255,255,255,0.5);
 }
 
 .arrow_box {
@@ -49,6 +52,7 @@ body {
   background-color: $popup-background;
   color: $popup-text;
   overflow: visible;
+  width:450px;
 
   :after, :before {
     top: 100%;
@@ -76,7 +80,7 @@ body {
   }
 
   #popup-content {
-    max-height: 500px;
+   // max-height: 500px;
     overflow: visible;
 
     th {
@@ -128,7 +132,7 @@ body {
     text-align: center;
   }
 
-  rect {
+  rect.legendRect {
     cursor: pointer;
     stroke-width: 2px;
   }
@@ -137,6 +141,14 @@ body {
     fill: transparent !important;
   }
 
+div.subheader h3{
+  text-align: center;
+}
+  div.subheader{
+    display: inline;
+    float: right;
+    width: 50%;
+  }
 }
 
 .hidden {
