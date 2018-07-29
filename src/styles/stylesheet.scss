@@ -1,4 +1,5 @@
 @import "variables";
+@import "animate.css";
 
 body {
   font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -346,4 +347,16 @@ input:checked + .tabLabel {
   label {
     padding: 15px;
   }
+}
+
+/* Style for info boxes */
+/* https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_panels_quotes */
+.info-box {
+  color: white;
+  background-color: #00BCD4;
+  border-left: 6px solid #ccc;
+  padding: 0.01em 16px;
+  margin-left: 10px;
+  max-width: 75%;
+  box-sizing: inherit;
 }
