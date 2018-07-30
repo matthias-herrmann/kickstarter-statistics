@@ -8,11 +8,12 @@
     "median_pledged": 223.7647594,
     "median_goal": 6000,
     "states": {
-      "suspended": 4.0,
-      "failed": 256.0,
-      "successful": 112.0,
-      "canceled": 37.0
-    }
+      "suspended": 4,
+      "failed": 256,
+      "successful": 112,
+      "canceled": 37
+    },
+    "success_rate": 27.383863080684595
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa80",
@@ -23,11 +24,12 @@
     "median_pledged": 252.29539502,
     "median_goal": 10000,
     "states": {
-      "suspended": 3.0,
-      "failed": 204.0,
-      "canceled": 47.0,
-      "successful": 80.0
-    }
+      "suspended": 3,
+      "failed": 204,
+      "canceled": 47,
+      "successful": 80
+    },
+    "success_rate": 23.952095808383234
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa81",
@@ -38,11 +40,12 @@
     "median_pledged": 385.19882347500004,
     "median_goal": 30000,
     "states": {
-      "failed": 378.0,
-      "canceled": 78.0,
-      "successful": 293.0,
-      "suspended": 3.0
-    }
+      "failed": 378,
+      "canceled": 78,
+      "successful": 293,
+      "suspended": 3
+    },
+    "success_rate": 38.96276595744681
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa82",
@@ -53,10 +56,11 @@
     "median_pledged": 1689.968268505,
     "median_goal": 427500,
     "states": {
-      "canceled": 1.0,
-      "failed": 14.0,
-      "successful": 15.0
-    }
+      "canceled": 1,
+      "failed": 14,
+      "successful": 15
+    },
+    "success_rate": 50
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa83",
@@ -67,11 +71,12 @@
     "median_pledged": 237.66666426,
     "median_goal": 5000,
     "states": {
-      "suspended": 3.0,
-      "successful": 165.0,
-      "canceled": 50.0,
-      "failed": 288.0
-    }
+      "suspended": 3,
+      "successful": 165,
+      "canceled": 50,
+      "failed": 288
+    },
+    "success_rate": 32.608695652173914
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa84",
@@ -82,11 +87,12 @@
     "median_pledged": 84.70403776,
     "median_goal": 8000,
     "states": {
-      "suspended": 12.0,
-      "successful": 323.0,
-      "canceled": 179.0,
-      "failed": 1164.0
-    }
+      "suspended": 12,
+      "successful": 323,
+      "canceled": 179,
+      "failed": 1164
+    },
+    "success_rate": 19.249106078665076
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa85",
@@ -97,11 +103,12 @@
     "median_pledged": 143.47878215,
     "median_goal": 52500,
     "states": {
-      "canceled": 116.0,
-      "failed": 552.0,
-      "successful": 313.0,
-      "suspended": 3.0
-    }
+      "canceled": 116,
+      "failed": 552,
+      "successful": 313,
+      "suspended": 3
+    },
+    "success_rate": 31.808943089430898
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa86",
@@ -112,11 +119,12 @@
     "median_pledged": 596.62952,
     "median_goal": 8000,
     "states": {
-      "canceled": 172.0,
-      "failed": 982.0,
-      "suspended": 7.0,
-      "successful": 688.0
-    }
+      "canceled": 172,
+      "failed": 982,
+      "suspended": 7,
+      "successful": 688
+    },
+    "success_rate": 37.2093023255814
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa87",
@@ -127,11 +135,12 @@
     "median_pledged": 436.35334121,
     "median_goal": 6000,
     "states": {
-      "canceled": 66.0,
-      "suspended": 8.0,
-      "failed": 490.0,
-      "successful": 348.0
-    }
+      "canceled": 66,
+      "suspended": 8,
+      "failed": 490,
+      "successful": 348
+    },
+    "success_rate": 38.15789473684211
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa88",
@@ -142,11 +151,12 @@
     "median_pledged": 147.29676984,
     "median_goal": 6000,
     "states": {
-      "canceled": 146.0,
-      "failed": 865.0,
-      "successful": 376.0,
-      "suspended": 14.0
-    }
+      "canceled": 146,
+      "failed": 865,
+      "successful": 376,
+      "suspended": 14
+    },
+    "success_rate": 26.837972876516776
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa89",
@@ -157,11 +167,12 @@
     "median_pledged": 1191,
     "median_goal": 5000,
     "states": {
-      "suspended": 609.0,
-      "canceled": 10629.0,
-      "successful": 92558.0,
-      "failed": 84953.0
-    }
+      "suspended": 609,
+      "canceled": 10629,
+      "successful": 92558,
+      "failed": 84953
+    },
+    "success_rate": 49.037610795288984
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8a",
@@ -172,10 +183,11 @@
     "median_pledged": 1512.0061033,
     "median_goal": 10000,
     "states": {
-      "failed": 18.0,
-      "canceled": 1.0,
-      "successful": 14.0
-    }
+      "failed": 18,
+      "canceled": 1,
+      "successful": 14
+    },
+    "success_rate": 42.42424242424242
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8b",
@@ -186,11 +198,12 @@
     "median_pledged": 749.09105123,
     "median_goal": 3000,
     "states": {
-      "failed": 9999.0,
-      "suspended": 97.0,
-      "canceled": 1492.0,
-      "successful": 9630.0
-    }
+      "failed": 9999,
+      "suspended": 97,
+      "canceled": 1492,
+      "successful": 9630
+    },
+    "success_rate": 45.385993024790274
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8c",
@@ -201,11 +214,12 @@
     "median_pledged": 271.66365534,
     "median_goal": 7000,
     "states": {
-      "suspended": 59.0,
-      "successful": 1624.0,
-      "canceled": 463.0,
-      "failed": 2783.0
-    }
+      "suspended": 59,
+      "successful": 1624,
+      "canceled": 463,
+      "failed": 2783
+    },
+    "success_rate": 32.947859606411036
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8d",
@@ -216,11 +230,12 @@
     "median_pledged": 1099.181691825,
     "median_goal": 7000,
     "states": {
-      "suspended": 5.0,
-      "canceled": 16.0,
-      "failed": 125.0,
-      "successful": 130.0
-    }
+      "suspended": 5,
+      "canceled": 16,
+      "failed": 125,
+      "successful": 130
+    },
+    "success_rate": 47.10144927536232
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8e",
@@ -231,11 +246,12 @@
     "median_pledged": 411.96172,
     "median_goal": 6000,
     "states": {
-      "suspended": 56.0,
-      "canceled": 880.0,
-      "successful": 3451.0,
-      "failed": 4986.0
-    }
+      "suspended": 56,
+      "canceled": 880,
+      "successful": 3451,
+      "failed": 4986
+    },
+    "success_rate": 36.8185212845407
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa8f",
@@ -246,11 +262,12 @@
     "median_pledged": 208.44273216,
     "median_goal": 7500,
     "states": {
-      "suspended": 18.0,
-      "successful": 499.0,
-      "canceled": 178.0,
-      "failed": 1106.0
-    }
+      "suspended": 18,
+      "successful": 499,
+      "canceled": 178,
+      "failed": 1106
+    },
+    "success_rate": 27.706829539144916
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa90",
@@ -261,11 +278,12 @@
     "median_pledged": 348.262885,
     "median_goal": 48000,
     "states": {
-      "suspended": 10.0,
-      "canceled": 93.0,
-      "successful": 410.0,
-      "failed": 614.0
-    }
+      "suspended": 10,
+      "canceled": 93,
+      "successful": 410,
+      "failed": 614
+    },
+    "success_rate": 36.379769299023955
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa91",
@@ -276,11 +294,12 @@
     "median_pledged": 320.40128129000004,
     "median_goal": 7500,
     "states": {
-      "suspended": 22.0,
-      "failed": 1436.0,
-      "canceled": 258.0,
-      "successful": 724.0
-    }
+      "suspended": 22,
+      "failed": 1436,
+      "canceled": 258,
+      "successful": 724
+    },
+    "success_rate": 29.67213114754098
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa92",
@@ -291,11 +310,12 @@
     "median_pledged": 346.320604005,
     "median_goal": 12000,
     "states": {
-      "suspended": 7.0,
-      "successful": 138.0,
-      "canceled": 41.0,
-      "failed": 278.0
-    }
+      "suspended": 7,
+      "successful": 138,
+      "canceled": 41,
+      "failed": 278
+    },
+    "success_rate": 29.74137931034483
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa93",
@@ -306,11 +326,12 @@
     "median_pledged": 4339.5287215,
     "median_goal": 58000,
     "states": {
-      "canceled": 24.0,
-      "successful": 151.0,
-      "suspended": 6.0,
-      "failed": 112.0
-    }
+      "canceled": 24,
+      "successful": 151,
+      "suspended": 6,
+      "failed": 112
+    },
+    "success_rate": 51.5358361774744
   },
   {
     "_id": "5afeccd89c2d4a7ae7b7fa94",
@@ -321,10 +342,11 @@
     "median_pledged": 154.144872,
     "median_goal": 40000,
     "states": {
-      "suspended": 6.0,
-      "failed": 262.0,
-      "successful": 144.0,
-      "canceled": 54.0
-    }
+      "suspended": 6,
+      "failed": 262,
+      "successful": 144,
+      "canceled": 54
+    },
+    "success_rate": 30.90128755364807
   }
 ]
