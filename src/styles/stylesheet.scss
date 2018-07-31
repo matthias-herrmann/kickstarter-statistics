@@ -1,16 +1,46 @@
 @import "variables";
 
 body {
-  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;//"Ubuntu Mono",
   margin: 0;
 }
 
 .header {
+  $hwidth: 30%;
   position: fixed;
   align-content: center;
-  background-color: transparent;
+  top:0px;
+  left:0px;
+  width:$hwidth;
+  margin-left: (100%-$hwidth)/2;
+  color:#CCC;
+  background:#004477;
+  padding:20px;
+  z-index: 7;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  border-radius: 0px 0px 15px 15px;
+  -webkit-transition: height 2s;
+  transition: height linear 3s;
 }
 
+.htitle{
+  text-align: center;
+  align-content: center;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+#show_info{
+  cursor: pointer;
+}
+#infoParagraph{
+  text-align: center;
+}
+.unfolded{
+  height: max-content;
+  -webkit-transition: width 2s;
+  transition: height 2s;
+}
 .map {
   height: 100vh;
   width: 100%;
@@ -154,6 +184,7 @@ div.subheader h3{
 .hidden {
   display: none;
 }
+
 
 /* Style for arrow */
 /* icon: https://fortawesome.github.io/Font-Awesome/icons/ */
