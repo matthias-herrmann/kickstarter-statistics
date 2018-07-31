@@ -20,7 +20,14 @@ y.domain([0, d3.max(data, function(d) { return d.count; })]);
 g.append('g')
 	.attr('class', 'axis axis--x')
 	.attr('transform', 'translate(0,' + height + ')')
-	.call(d3.axisBottom(x));
+	.call(d3.axisBottom(x))
+	.append('text')
+	.attr('dy', '0.71em')
+	.attr('y', 20)
+	.attr('x', 850)
+	.attr('text-anchor', 'end')
+	.attr('stroke', 'black')
+	.text('Launched At Hour In German Time (UTC+02:00)');
 
 g.append('g')
 	.attr('class', 'axis axis--y')
@@ -30,6 +37,7 @@ g.append('g')
 	.attr('y', 6)
 	.attr('dy', '0.71em')
 	.attr('text-anchor', 'end')
+	.attr('stroke', 'black')
 	.text('Projects');
 
 g.selectAll('.bar')

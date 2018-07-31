@@ -376,3 +376,8 @@ input:checked + .tabLabel {
   max-width: 75%;
   box-sizing: inherit;
 }
+
+/* bar chart style */
+.bar:hover {
+  fill: brown;
+}
