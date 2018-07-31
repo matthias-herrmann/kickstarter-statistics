@@ -9,12 +9,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        // Limiting the size of the woff fonts breaks font-awesome ONLY for the extract text plugin
+        // loader: "url?limit=10000"
+        use: "url-loader"
       },
       {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader"
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            outputPath: 'assets/'
+          }
+        }
       }, {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
@@ -38,7 +45,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: "styles/[name].css",
       chunkFilename: "[id].css"
     }),
     new CopyWebpackPlugin([
@@ -49,5 +56,8 @@ module.exports = {
       filename: "./index.html"
     }),
   ],
-  entry: "./main.js"
+  entry: [
+    "font-awesome/scss/font-awesome.scss",
+    "./main.js"
+  ]
 };

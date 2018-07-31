@@ -6,7 +6,6 @@ import './TreeMapChart';
 import './RadarChart';
 import './LaunchedAtBar';
 import './MoreContentArrow';
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import './header';
 
 const initMap = () => {

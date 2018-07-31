@@ -1,8 +1,7 @@
 @import "variables";
-@import "animate.css";
 
 body {
-  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;//"Ubuntu Mono",
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif; //"Ubuntu Mono",
   margin: 0;
 }
 
@@ -10,20 +9,18 @@ body {
   $hwidth: 30%;
   position: fixed;
   align-content: center;
-  top:0px;
-  left:0px;
+  top: 0;
+  left: 0;
   width: $hwidth;
   margin-left: (100%-$hwidth)/2;
-  color:#CCC;
-  background:#004477;
-  padding:20px;
+  color: #CCC;
+  background: #004477;
   z-index: 7;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-radius: 0px 0px 15px 15px;
+  padding: 0.25em 1.25em;
+  border-radius: 0 0 1em 1em;
   -webkit-transition: height 2s ease;
   -moz-transition: height 2s ease;
-  -o-transition:  height 2s ease;
+  -o-transition: height 2s ease;
   transition: height 2s ease;
 }
 
@@ -31,24 +28,27 @@ a {
   color: yellow;
 }
 
-.htitle{
+.htitle {
   text-align: center;
   align-content: center;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
-#show_info{
+
+#show_info {
   cursor: pointer;
 }
-#infoParagraph{
+
+#infoParagraph {
   text-align: center;
 }
 
-.unfolded{
+.unfolded {
   height: max-content;
   -webkit-transition: width 2s;
   transition: height 2s;
 }
+
 .map {
   height: 100vh;
   width: 100%;
@@ -78,7 +78,7 @@ a {
   width: auto;
   padding: 0.3em;
   border-radius: .4em;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .arrow_box {
@@ -90,7 +90,7 @@ a {
   background-color: $popup-background;
   color: $popup-text;
   overflow: visible;
-  width:450px;
+  width: 450px;
 
   :after, :before {
     top: 100%;
@@ -118,7 +118,7 @@ a {
   }
 
   #popup-content {
-   // max-height: 500px;
+    // max-height: 500px;
     overflow: visible;
 
     th {
@@ -179,10 +179,10 @@ a {
     fill: transparent !important;
   }
 
-div.subheader h3{
-  text-align: center;
-}
-  div.subheader{
+  div.subheader h3 {
+    text-align: center;
+  }
+  div.subheader {
     display: inline;
     float: right;
     width: 50%;
@@ -193,11 +193,10 @@ div.subheader h3{
   display: none;
 }
 
-
 /* Style for arrow */
 /* icon: https://fortawesome.github.io/Font-Awesome/icons/ */
 /* Animation: https://daneden.github.io/animate.css/ */
-.arrow-container{
+.arrow-container {
   width: 100px;
   height: 100px;
   margin: 0 auto;
@@ -207,7 +206,7 @@ div.subheader h3{
   right: 0;
 }
 
-.arrow-1{
+.arrow-1 {
   width: 100px;
   height: 100px;
   background: #00BCD4;
@@ -216,7 +215,7 @@ div.subheader h3{
   position: absolute;
 }
 
-.arrow-2{
+.arrow-2 {
   width: 60px;
   height: 60px;
   background: #ffffff;
@@ -228,7 +227,7 @@ div.subheader h3{
   display: table;
 }
 
-.arrow-2:before{
+.arrow-2:before {
   width: 52px;
   height: 52px;
   content: "";
@@ -239,7 +238,7 @@ div.subheader h3{
   left: 2px;
 }
 
-.arrow-2 i.fa{
+.arrow-2 i.fa {
   font-size: 30px;
   display: table-cell;
   vertical-align: middle;
@@ -280,10 +279,10 @@ div.subheader h3{
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
   -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition:    all 0.1s ease-in-out;
-  -ms-transition:     all 0.1s ease-in-out;
-  -o-transition:      all 0.1s ease-in-out;
-  transition:         all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .radio-group label:hover {
@@ -303,7 +302,6 @@ div.subheader h3{
 .radio-group label:last-of-type {
   border-radius: 0 4px 4px 0;
 }
-
 
 /* Tabs */
 section {
