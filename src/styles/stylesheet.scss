@@ -303,26 +303,6 @@ div.subheader h3{
   border-radius: 0 4px 4px 0;
 }
 
--moz-keyframes spin-upwards { 100% { -moz-transform: rotate(180deg);} }
-@-webkit-keyframes spin-upwards { 100% { -webkit-transform: rotate(180deg);} }
-@keyframes spin-upwards { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }
-
--moz-keyframes spin-downwards { 100% { -moz-transform: rotate(0deg);} }
-@-webkit-keyframes spin-downwards { 100% { -webkit-transform: rotate(0deg);} }
-@keyframes spin-downwards { 100% { -webkit-transform: rotate(0deg); transform:rotate(0deg); } }
-
-/* arrow animation */
-.fa-angle-down.upwards {
-  -webkit-animation: spin-updwards 0.5s;
-  -moz-animation:spin-upwards 0.5s;
-  animation:spin-upwards 0.5s forwards;
-}
-
-.fa-angle-down.downwards {
-  -webkit-animation: spin-downwards 0.5s;
-  -moz-animation:spin-downwards 0.5s;
-  animation:spin-downwards 0.5s forwards;
-}
 
 /* Tabs */
 section {
