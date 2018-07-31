@@ -7,6 +7,7 @@ import './RadarChart';
 import './LaunchedAtBar';
 import './MoreContentArrow';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import './header';
 
 const initMap = () => {
 	const target = 'map',
@@ -14,6 +15,7 @@ const initMap = () => {
 		keyValues = {
 			'avg_pledged': 'Pledged',
 			'avg_goal': 'Goal',
+			'success_rate': 'Success Rate',
 			'projects_count': 'Project Count',
 		},
 		dataMap = new DataMap(target, colors, keyValues);
