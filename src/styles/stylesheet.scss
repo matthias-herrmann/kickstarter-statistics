@@ -11,17 +11,19 @@ body {
   align-content: center;
   top:0px;
   left:0px;
-  width:$hwidth;
+  width: $hwidth;
   margin-left: (100%-$hwidth)/2;
   color:#CCC;
   background:#004477;
   padding:20px;
   z-index: 7;
-  padding-top: 0px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   border-radius: 0px 0px 15px 15px;
-  -webkit-transition: height 2s;
-  transition: height linear 3s;
+  -webkit-transition: height 2s ease;
+  -moz-transition: height 2s ease;
+  -o-transition:  height 2s ease;
+  transition: height 2s ease;
 }
 
 .htitle{

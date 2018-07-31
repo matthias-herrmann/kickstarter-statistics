@@ -14,18 +14,6 @@ export default class Popup {
 			width = 400,
 			height = 400,
 			total_projects = globalData["projects_count"],
-			dataset = [
-				{label: "mice", count: 5000},
-				{label: "cats", count: 2222},
-				{label: "dogs", count: 4000}
-				],
-			data3 =[
-				{label:"green", count:56},
-				{label:"blue", count:178},
-				{label:"yellow", count:500},
-				{label:"cyan", count:566},
-				{label:"pink", count:990},
-			],
 			colors = ['green', 'purple', 'yellow'],
 			global_max_pledged = max("avg_pledged"),
 			global_avg_pledged = globalData["avg_pledged"],
