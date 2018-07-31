@@ -2,7 +2,7 @@ const arrowIcon = document.querySelector('.arrow-2').children[0];
 const scrollToBottom = () => window.scrollTo(0, document.body.scrollHeight);
 const scrollToTop = () => window.scrollTo(0, 0);
 const arrowContainer = document.querySelector('.arrow-container');
-const VIEW_PORT_PERCENTAGE_SHOULD_ROTATE_ANGLE = 0.6;
+const VIEW_PORT_PERCENTAGE_SHOULD_ROTATE_ANGLE = 0.4;
 
 arrowContainer.addEventListener('click', function() {
 	if(isArrowPointingUpwards()) {

@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 // https://bl.ocks.org/mbostock/3885304
 
 var svg = d3.select('#barSvg'),
-	margin = {top: 20, right: 20, bottom: 30, left: 40},
+	margin = {top: 20, right: 20, bottom: 30, left: 70},
 	width = +svg.attr('width') - margin.left - margin.right,
 	height = +svg.attr('height') - margin.top - margin.bottom;
 
