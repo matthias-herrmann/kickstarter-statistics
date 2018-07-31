@@ -4,9 +4,6 @@
 <head>
     <meta charset="utf-8"/>
     <title>Kickstarter Statistics</title>
-    <!-- TODO: Remove next line after testing implementation -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css"/>
 </head>
 
 <body>
@@ -18,8 +15,11 @@
         projects from every country it operates in. <br>
         <br>
         Kickstarter Statistics is a project of <br>
-        B.Strasser, M. Hermann and M. Mück<br>
+        Benedikt Strasser, Matthias Hermann and Marcel Mück<br>
         from the University of Regensburg<br>
+        <br>
+        The map and "Launched At Hours" bar chart are based on the datasets from March 2016 - February 2018 provided by <a href="https://webrobots.io/kickstarter-datasets/">webrobots</a>. <br>
+        Other charts are using <a href="https://www.kickstarter.com/help/stats">official kickstarter</a> statistics from 21.07.2018.
     </p>
 </div>
 <div id="map" class="map">
@@ -59,8 +59,8 @@
 
 
 <section id="content1">
-    <div>
-        <p><i class="fa fa-info"></i>Each box represents a category. The size of the box is proportional to it`s value. The data which has been used
+    <div class="info-box">
+        <p><i class="fa fa-info-circle"></i> Each box represents a category. The size of the box is proportional to it`s value. The data which has been used
         is from the official kickstarter site.</p>
     </div>
     <svg id="treeSvg" style="padding: 10px;">
@@ -78,12 +78,19 @@
 </section>
 
 <section id="content2">
+    <div class="info-box">
+        <p><i class="fa fa-info-circle"></i> The spider chart displays the success rate of projects in the given category. The data which has been used
+            is from the official kickstarter site.</p>
+    </div>
     <div id="radarWrapper">
         <div id="radar"></div>
     </div>
 </section>
 
 <section id="content3">
+    <div class="info-box">
+        <p><i class="fa fa-info-circle"></i> The bar chart displays how many projects have been launched at which hour in German time. The data which has been used is provided by webrobots.</p>
+    </div>
    <svg id="barSvg" width="960" height="500"></svg>
 </section>
 
