@@ -25,7 +25,7 @@ $ npm run build
 ```
 
 ## Data
-The implementation is based on the dataset provided by [webrobots](https://webrobots.io/kickstarter-datasets/) (2014-2018) and [Kickstarter](https://www.kickstarter.com/help/stats).
+The implementation is based on the dataset provided by [webrobots](https://webrobots.io/kickstarter-datasets/) (2016 - 2018) and [Kickstarter](https://www.kickstarter.com/help/stats).
 
 ## License
 This project is licensed under the terms of the [MIT License](LICENSE).
