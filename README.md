@@ -4,6 +4,8 @@
 The goal of this project is to represent interesting statistics about Kickstarter which include, but are not limited to, success rate, amount of money pledged and more! 
 The main component is an interactive map which represents data for the highlighted country.  
 
+>This project was part of the information visualization course from the University of Regensburg.
+
 ## Quickstart
 After cloning this repository run the following to run a local server.
 ```
@@ -23,4 +25,7 @@ $ npm run build
 ```
 
 ## Data
-The implementation is based on the dataset provided by [webrobots](https://webrobots.io/kickstarter-datasets/) and [Kickstarter](https://www.kickstarter.com/help/stats).
+The implementation is based on the dataset provided by [webrobots](https://webrobots.io/kickstarter-datasets/) (2014-2018) and [Kickstarter](https://www.kickstarter.com/help/stats).
+
+## License
+This project is licensed under the terms of the [MIT License](LICENSE).
