@@ -6,6 +6,11 @@ The main component is an interactive map which represents data for the highlight
 
 >This project was part of the information visualization course from the University of Regensburg.
 
+## Screenshots
+![Image of Mapview](Map.png)
+![Spider](Spider.png)
+![Treemap](Treemap.png)
+
 ## Quickstart
 After cloning this repository run the following to run a local server.
 ```
